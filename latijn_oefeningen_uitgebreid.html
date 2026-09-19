@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latijn Herhalingsoefeningen 1.2-1.4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .section {
+            margin: 40px 0;
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .oefening {
+            background: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .vraag {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .invoer-vak {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-family: inherit;
+        }
+
+        .invoer-vak:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        textarea.invoer-vak {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .antwoord-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .antwoord-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .antwoord-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2e7d32;
+            display: none;
+        }
+
+        .antwoord-box.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .antwoord-label {
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 13px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f0f4ff;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        td input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        td input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .multi-input {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 600px) {
+            .multi-input {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .multi-input input {
+            width: 100%;
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #999;
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .tips {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #e65100;
+        }
+
+        .tips h3 {
+            margin-bottom: 10px;
+            color: #e65100;
+            font-size: 15px;
+        }
+
+        .tips ul {
+            margin-left: 20px;
+        }
+
+        .tips li {
+            margin: 8px 0;
+        }
+
+        .samenvattings-tabel {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .samenvattings-tabel th, .samenvattings-tabel td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .samenvattings-tabel th {
+            background: #667eea;
+            color: white;
+        }
+
+        .oefening-nummer {
+            color: #667eea;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Latijn Herhalingsoefeningen</h1>
+        <div class="subtitle">Hoofdstukken 1.2, 1.3, 1.4 — Uitgebreide interactieve oefenvorm</div>
+
+        <!-- DEEL 1: DECLENSIES -->
+        <div class="section">
+            <h2>DEEL 1: Declensies bepalen en geslacht</h2>
+            <p style="margin-bottom: 15px; color: #666;">Bepaal voor elk woord: tot welke declinatie behoort het, en wat is het geslacht?</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> rosa, -ae</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    1e declinatie, vrouwelijk (f.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> avis, -is</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, vrouwelijk (f.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> dux, ducis</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, manlijk (m.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> fructus, -ûs</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    4e declinatie, manlijk (m.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">5.</span> dōnum, -i</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    2e declinatie, onzijdig (n.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">6.</span> hostis, -is</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, manlijk (m.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">7.</span> miles, -itis</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, manlijk (m.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">8.</span> tempus, -oris</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, onzijdig (n.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">9.</span> filius, -i</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    2e declinatie, manlijk (m.)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">10.</span> corpus, -oris</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Declinatie (1/2/3)" class="invoer-vak">
+                    <input type="text" placeholder="Geslacht (m/f/n)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    3e declinatie, onzijdig (n.)
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 2: VERVOEGING NAAMWOORDEN -->
+        <div class="section">
+            <h2>DEEL 2: Naamwoorden vervoegen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Vul alle vormen in (singularis en pluralis):</p>
+
+            <div class="oefening">
+                <div class="vraag"><strong>rosa, -ae (f.)</strong></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nominatief</th>
+                            <th>Genitief</th>
+                            <th>Datief</th>
+                            <th>Accusatief</th>
+                            <th>Ablatief</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Singularis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                        <tr>
+                            <th>Pluralis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Juiste vormen:</div>
+                    <strong>Singularis:</strong> rosa, rosae, rosae, rosam, rosâ<br>
+                    <strong>Pluralis:</strong> rosae, rosarum, rosis, rosas, rosis
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><strong>filius, -i (m.)</strong></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nominatief</th>
+                            <th>Genitief</th>
+                            <th>Datief</th>
+                            <th>Accusatief</th>
+                            <th>Ablatief</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Singularis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                        <tr>
+                            <th>Pluralis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Juiste vormen:</div>
+                    <strong>Singularis:</strong> filius, filii, filiô, filium, filiô<br>
+                    <strong>Pluralis:</strong> filii, filiorum, filiis, filios, filiis
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><strong>dux, ducis (m.)</strong></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nominatief</th>
+                            <th>Genitief</th>
+                            <th>Datief</th>
+                            <th>Accusatief</th>
+                            <th>Ablatief</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Singularis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                        <tr>
+                            <th>Pluralis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Juiste vormen:</div>
+                    <strong>Singularis:</strong> dux, ducis, duci, ducem, duce<br>
+                    <strong>Pluralis:</strong> duces, ducum, ducibus, duces, ducibus
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><strong>tempus, -oris (n.)</strong></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nominatief</th>
+                            <th>Genitief</th>
+                            <th>Datief</th>
+                            <th>Accusatief</th>
+                            <th>Ablatief</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Singularis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                        <tr>
+                            <th>Pluralis</th>
+                            <td><input type="text" placeholder="nom."></td>
+                            <td><input type="text" placeholder="gen."></td>
+                            <td><input type="text" placeholder="dat."></td>
+                            <td><input type="text" placeholder="acc."></td>
+                            <td><input type="text" placeholder="abl."></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Juiste vormen:</div>
+                    <strong>Singularis:</strong> tempus, temporis, tempori, tempus, tempore<br>
+                    <strong>Pluralis:</strong> tempora, temporum, temporibus, tempora, temporibus
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 3: ADJECTIEVEN -->
+        <div class="section">
+            <h2>DEEL 3: Adjectieven vervoegen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Vul de adjectieven in voor het gegeven geslacht en getal:</p>
+
+            <div class="oefening">
+                <div class="vraag"><strong>bonus, -a, -um (goed)</strong> – Manlijk enkelvoud</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Nominatief" class="invoer-vak">
+                    <input type="text" placeholder="Genitief" class="invoer-vak">
+                </div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Datief" class="invoer-vak">
+                    <input type="text" placeholder="Accusatief" class="invoer-vak">
+                </div>
+                <input type="text" placeholder="Ablatief" class="invoer-vak" style="max-width: calc(50% - 5px);">
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    bonus, boni, bonô, bonum, bonô
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><strong>tristis, -e (treurig)</strong> – Onzijdig meervoud</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Nominatief" class="invoer-vak">
+                    <input type="text" placeholder="Genitief" class="invoer-vak">
+                </div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Datief" class="invoer-vak">
+                    <input type="text" placeholder="Accusatief" class="invoer-vak">
+                </div>
+                <input type="text" placeholder="Ablatief" class="invoer-vak" style="max-width: calc(50% - 5px);">
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    tristia, tristium, tristibus, tristia, tristibus
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><strong>crudelis, -e (wreed)</strong> – Vrouwelijk enkelvoud</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Nominatief" class="invoer-vak">
+                    <input type="text" placeholder="Genitief" class="invoer-vak">
+                </div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Datief" class="invoer-vak">
+                    <input type="text" placeholder="Accusatief" class="invoer-vak">
+                </div>
+                <input type="text" placeholder="Ablatief" class="invoer-vak" style="max-width: calc(50% - 5px);">
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    crudelis, crudelis, crudeli, crudelis, crudeli
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 4: NAAMVALLEN EN FUNCTIES -->
+        <div class="section">
+            <h2>DEEL 4: Naamvallen en hun functies herkennen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Bepaal: welke naamval en welke functie? Denk goed na!</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> "Dionysius potens tyrannus erat"</div>
+                <div class="hint">Wie/wat is het onderwerp?</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Nominatief | Functie: onderwerp
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> "Malum ingenium habebat"</div>
+                <div class="hint">Wat heeft hij? (lijdend voorwerp)</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Accusatief | Functie: lijdend voorwerp
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> "Omnes incolarum exercitum possidentes augebat"</div>
+                <div class="hint">Van wie is het leger? (possessief = wat is het geslacht?)</div>
+                <input type="text" placeholder="Naamval van 'incolarum'" class="invoer-vak">
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Genitief (possessief/bezittelend)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> "Ubi pilâ luere volebat, primum tunicam depônebat"</div>
+                <div class="hint">Wat trok hij uit? (lijdend voorwerp)</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Accusatief | Functie: lijdend voorwerp
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">5.</span> "Idem tyrannus duas uxores habebat"</div>
+                <div class="hint">Hoeveel vrouwen had hij?</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Accusatief | Functie: lijdend voorwerp
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 5: DATIEF EN ABLATIEF -->
+        <div class="section">
+            <h2>DEEL 5: Datief en Ablatief onderscheiden</h2>
+            <p style="margin-bottom: 15px; color: #666;"><strong>Datief:</strong> aan wie, voor wie | <strong>Ablatief:</strong> waarmee, waar, waarvan</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> "Servô collum committere nôn audebat"</div>
+                <div class="hint">Aan wie vertrouwde hij zijn nek toe?</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie (indirekt object)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Datief | Functie: indirekt object (aan wie?)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> "Idem tyrannus fraude et astutiâ erat praepotens"</div>
+                <div class="hint">Waarmee was hij machtig?</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie (middel)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Ablatief | Functie: middel/gereedschap (waarmee?)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> "Civibus pax et concordia erant"</div>
+                <div class="hint">Aan wie behoorde vrede? (dativus possessivus)</div>
+                <input type="text" placeholder="Naamval van 'civibus'" class="invoer-vak">
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Datief (dativus possessivus = bezit)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> "Hercules corporê exercere solebat"</div>
+                <div class="hint">Met welk onderdeel trainde hij?</div>
+                <div class="multi-input">
+                    <input type="text" placeholder="Naamval" class="invoer-vak">
+                    <input type="text" placeholder="Functie (middel)" class="invoer-vak">
+                </div>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Correct:</div>
+                    Ablatief | Functie: middel/gereedschap (waarmee?)
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 6: VERTALINGEN -->
+        <div class="section">
+            <h2>DEEL 6: Vertalingen Nederlands → Latijn</h2>
+            <p style="margin-bottom: 15px; color: #666;">Vertaal naar het Nederlands of Latijn:</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> "Malum ingenium habebat"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "Hij/zij had een slecht karakter" of "Een slechte aard bezat hij"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> "Ubi pilâ luere volebat, primum tunicam depônebat"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "Wanneer hij zich met een bal wilde baden, trok hij eerst zijn hemd uit"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> "Deinde servô gladium suum tradebat"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "Vervolgens gaf hij zijn zwaard aan de slaaf"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> "Quôdam diê etiam novum dolum excogitâ"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "Op een bepaalde dag bedacht hij ook een nieuwe list/truc"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">5.</span> "Servi circum tyranni lectum fossam latam altamque faciunt"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "De slaven maken rond het bed van de tiran een brede en diepe gracht"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">6.</span> "Nocte cubiculi forês claudit et dê lectô manibus suis ponticulum aufert"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "'s Nachts sluit hij de deur van de slaapkamer en haalt met zijn eigen handen het bruggetje van het bed af"
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">7.</span> "Hercules in campô corporê exercere solebat"</div>
+                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
+                    "Hercules placht op het veld zijn lichaam te trainen/oefenen"
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 7: OPEN VRAGEN TEKSTVERSTAAN -->
+        <div class="section">
+            <h2>DEEL 7: Tekstverstaan – Open vragen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Beantwoord in volledige zinnen. Denk goed na!</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> Wat was Hecuba's visioen en waarom was zij bang voor de geboorte van Paris?</div>
+                <textarea class="invoer-vak" placeholder="Jouw antwoord"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">💡 Suggestie:</div>
+                    Hecuba had voor de geboorte van Paris een nachtmerrie waarin zij zag dat haar zoon Troje zou vernietigen. Het orakel waarschuwde dat hij een groot onheil zou brengen. Daarom was zij ervan overtuigd dat het kind gedood moest worden.
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> Wat gebeurde er met het pasgeboren kind? Hoe kwam hij in leven te blijven?</div>
+                <textarea class="invoer-vak" placeholder="Jouw antwoord"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">💡 Suggestie:</div>
+                    Priamus gaf bevel om het kind (Paris) dood te maken. Maar het kind werd gered door herders en opgegroeid op het platteland. Later werd ontdekt dat het Paris was, de zoon van Priamus.
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> Beschrijf het karakter van Dionysus. Welke adjectieven passen bij hem?</div>
+                <textarea class="invoer-vak" placeholder="Jouw antwoord"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">💡 Suggestie:</div>
+                    Dionysus was: <strong>potens</strong> (machtig), <strong>tyrannus</strong> (tiran), had <strong>malum ingenium</strong> (slechte aard), was <strong>avarum</strong> (gierig), <strong>suspiciosus</strong> (wantrouwend), <strong>astuus</strong> (listig), <strong>crudelis</strong> (wreed). Hij gebruikte fraude (bedrog) en listigheid om zijn macht te behouden.
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> Welke angsten had Dionysus? Hoe probeerde hij zich tegen gevaren te beschermen?</div>
+                <textarea class="invoer-vak" placeholder="Jouw antwoord"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">💡 Suggestie:</div>
+                    Dionysus was vooral bang voor vergiftiging en aanvallen. Als bescherming: hij at alleen voedsel dat door vertrouwde slaven was bereid, hij gaf zijn zwaard aan de slaaf voordat hij ging baden, en hij maakte een gracht rond zijn bed. Hij vertrouwde niemand en gebruikte heftige voorzorgsmaatregelen.
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">5.</span> Waarom kon Dionysus nooit echt gelukkig zijn, ondanks zijn macht?</div>
+                <textarea class="invoer-vak" placeholder="Jouw antwoord"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">💡 Suggestie:</div>
+                    Omdat hij wantrouwde iedereen en voortdurend bang was. Zijn macht en zijn slechte karakter maakten hem erg onrustig. Hij kon niet genieten van het leven omdat hij voortdurend op zijn hoede moest zijn. Macht zonder vertrouwen leidt tot ongeluk.
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 8: SCHRIJFOEFENINGEN -->
+        <div class="section">
+            <h2>DEEL 8: Schrijf zelf Latijnse zinnen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Schrijf zinnen volgens het gegeven patroon:</p>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">1.</span> Nominatief + werkwoord + accusatief<br><span style="font-size: 13px; color: #999;">(bijv. "Puer librum legit" = De jongen leest een boek)</span></div>
+                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Voorbeeld:</div>
+                    "Magister discipulos docet" (De leraar onderwijs de leerlingen)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">2.</span> Zin met een datiefobject<br><span style="font-size: 13px; color: #999;">(bijv. "Puer patri felem dat" = De jongen geeft zijn vader een kat)</span></div>
+                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Voorbeeld:</div>
+                    "Miles duce gladium tradit" (De soldaat geeft de aanvoerder het zwaard)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">3.</span> Zin met ablatief van middel<br><span style="font-size: 13px; color: #999;">(bijv. "Puer sagitta leonem necat" = De jongen doodt de leeuw met een pijl)</span></div>
+                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Voorbeeld:</div>
+                    "Hercules clava hostes vincit" (Hercules overwint de vijanden met een knuppel)
+                </div>
+            </div>
+
+            <div class="oefening">
+                <div class="vraag"><span class="oefening-nummer">4.</span> Zin met twee adjectieven die het naamwoord beschrijven</div>
+                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin"></textarea>
+                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
+                <div class="antwoord-box">
+                    <div class="antwoord-label">✓ Voorbeeld:</div>
+                    "Puella clara et pulchra amata est" (Het mooie en heldere meisje werd bemind)
+                </div>
+            </div>
+        </div>
+
+        <!-- DEEL 9: SAMENVATTING -->
+        <div class="section">
+            <h2>DEEL 9: Samenvatting – De 5 naamvallen</h2>
+            <p style="margin-bottom: 15px; color: #666;">Vul in: welke functie hoort bij elke naamval?</p>
+
+            <table class="samenvattings-tabel">
+                <thead>
+                    <tr>
+                        <th>Naamval</th>
+                        <th>Functie / Vraag</th>
+                        <th>Voorbeeld</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nominatief</strong></td>
+                        <td><input type="text" placeholder="Functie?" class="invoer-vak" style="font-size: 13px;"></td>
+                        <td><input type="text" placeholder="Voorbeeld?" class="invoer-vak" style="font-size: 13px;"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Genitief</strong></td>
+                        <td><input type="text" placeholder="Functie?" class="invoer-vak" style="font-size: 13px;"></td>
+                        <td><input type="text" placeholder="Voorbeeld?" class="invoer-vak" style="font-size: 13px;"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Datief</strong></td>
+                        <td><input type="text" placeholder="Functie?" class="invoer-vak" style="font-size: 13px;"></td>
+                        <td><input type="text" placeholder="Voorbeeld?" class="invoer-vak" style="font-size: 13px;"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accusatief</strong></td>
+                        <td><input type="text" placeholder="Functie?" class="invoer-vak" style="font-size: 13px;"></td>
+                        <td><input type="text" placeholder="Voorbeeld?" class="invoer-vak" style="font-size: 13px;"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ablatief</strong></td>
+                        <td><input type="text" placeholder="Functie?" class="invoer-vak" style="font-size: 13px;"></td>
+                        <td><input type="text" placeholder="Voorbeeld?" class="invoer-vak" style="font-size: 13px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="antwoord-btn" onclick="toonAntwoord(this)" style="margin-top: 15px;">Zie volledig antwoord</button>
+            <div class="antwoord-box">
+                <div class="antwoord-label">✓ Juiste antwoorden:</div>
+                <strong>Nominatief:</strong> Onderwerp | Puer currit (De jongen loopt)<br>
+                <strong>Genitief:</strong> Possessief/bezit | pueri liber (het boek van de jongen)<br>
+                <strong>Datief:</strong> Indirekt object (aan/voor wie?) | patri librum do (ik geef vader het boek)<br>
+                <strong>Accusatief:</strong> Lijdend voorwerp (wat?) | librum lego (ik lees het boek)<br>
+                <strong>Ablatief:</strong> Middel/plaats (waarmee?, waar?) | gladio pugnat (hij vecht met het zwaard)
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="tips">
+            <h3>💡 Handige tips voor Jules</h3>
+            <ul>
+                <li><strong>Paradigmata schrijven:</strong> Schrijf elk naamwoord en adjectief volledig uit (alle 5 naamvallen, sing. + plur.). Dit kost tijd maar is essentieel!</li>
+                <li><strong>Nominatief = onderwerp</strong> – Denk: wie doet het? → nominatief</li>
+                <li><strong>Accusatief = lijdend voorwerp</strong> – Denk: wie/wat krijgt het? → accusatief</li>
+                <li><strong>Datief = indirekt object</strong> – Denk: aan wie? voor wie? → datief</li>
+                <li><strong>Ablatief = middel/plaats</strong> – Denk: waarmee? waar? → ablatief</li>
+                <li><strong>Adjectieven:</strong> ALTIJD dezelfde naamval, geslacht en getal als het naamwoord!</li>
+                <li><strong>Voorzetsels:</strong> in + ABL = waar? | in + ACC = waar heen?</li>
+                <li><strong>Bij twijfel:</strong> Onderstreep het werkwoord. Wat vraag je ervan? (wie/wat/aan wie?) → dan weet je de naamval</li>
+                <li><strong>Herhaling is alles!</strong> Leer niet uitwendig, maar begrijp de patronen. Oefen dagelijks!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toonAntwoord(btn) {
+            const antwoordBox = btn.nextElementSibling;
+            antwoordBox.classList.toggle('show');
+            btn.textContent = antwoordBox.classList.contains('show') ? 'Verberg antwoord' : 'Zie antwoord';
+        }
+
+        document.querySelectorAll('.antwoord-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.nextElementSibling.classList.contains('show')) {
+                    setTimeout(() => {
+                        this.nextElementSibling.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
