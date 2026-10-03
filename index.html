@@ -1,625 +1,484 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latijn Herhalingsoefeningen - GEVORDERD</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #d63031 0%, #a83632 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 28px;
-        }
-
-        .subtitle {
-            color: #d63031;
-            margin-bottom: 10px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .info {
-            background: #ffebee;
-            border-left: 4px solid #d63031;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: #c2185b;
-        }
-
-        .section {
-            margin: 40px 0;
-            border-left: 4px solid #d63031;
-            padding-left: 20px;
-        }
-
-        .section h2 {
-            color: #d63031;
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .oefening {
-            background: #f8f9fa;
-            padding: 18px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .vraag {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-            font-size: 15px;
-        }
-
-        .invoer-vak {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-            margin-bottom: 10px;
-            font-family: inherit;
-        }
-
-        .invoer-vak:focus {
-            outline: none;
-            border-color: #d63031;
-            background: #fff3e0;
-        }
-
-        textarea.invoer-vak {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .antwoord-btn {
-            background: #d63031;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            margin-top: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .antwoord-btn:hover {
-            background: #a83632;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(214, 48, 49, 0.3);
-        }
-
-        .antwoord-box {
-            background: #e8f5e9;
-            border-left: 4px solid #4caf50;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #2e7d32;
-            display: none;
-        }
-
-        .antwoord-box.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .antwoord-label {
-            font-weight: 600;
-            color: #1b5e20;
-            margin-bottom: 8px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 13px;
-            background: white;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background: #fff3e0;
-            color: #d63031;
-            font-weight: 600;
-        }
-
-        td input {
-            width: 100%;
-            padding: 6px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 13px;
-        }
-
-        td input:focus {
-            outline: none;
-            border-color: #d63031;
-            background: #fff3e0;
-        }
-
-        .multi-input {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 12px 0;
-        }
-
-        @media (max-width: 600px) {
-            .multi-input {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .multi-input input {
-            width: 100%;
-        }
-
-        .hint {
-            font-size: 13px;
-            color: #d63031;
-            margin: 8px 0;
-            font-style: italic;
-            font-weight: 500;
-        }
-
-        .moeilijkheid {
-            display: inline-block;
-            background: #ffcdd2;
-            color: #c2185b;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-
-        .tips {
-            background: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #e65100;
-        }
-
-        .tips h3 {
-            margin-bottom: 10px;
-            color: #e65100;
-            font-size: 15px;
-        }
-
-        .tips ul {
-            margin-left: 20px;
-        }
-
-        .tips li {
-            margin: 8px 0;
-        }
-
-        .oefening-nummer {
-            color: #d63031;
-            font-weight: 600;
-            margin-right: 8px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caput 1 — Volledige Woordenschat</title>
+<meta name="description" content="Oefentoets: volledige woordenlijst Caput 1 Theatrum (1–131) + groene kaders">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#eceef0; --surface:#ffffff; --surface-2:#f4f1e6; --ink:#1f2a24; --ink-soft:#4a564d;
+  --line:#d7d4c4; --accent:#a8721f; --accent-ink:#5c3f10; --accent-soft:#f1e2c4;
+  --wrong:#b3432f; --wrong-soft:#f6ddd6; --partial:#a8721f; --partial-soft:#f1e2c4;
+  --right:#3f6357; --right-soft:#dfe9e2; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161c19; --surface:#1f2622; --surface-2:#242c26; --ink:#e9e7da; --ink-soft:#b6bab0;
+    --line:#3a4239; --accent:#d9a44a; --accent-ink:#2b1d09; --accent-soft:#3a2f18;
+    --wrong:#e29383; --wrong-soft:#3d241e; --partial:#d9a44a; --partial-soft:#3a2f18;
+    --right:#8caf9c; --right-soft:#233a30; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161c19; --surface:#1f2622; --surface-2:#242c26; --ink:#e9e7da; --ink-soft:#b6bab0;
+  --line:#3a4239; --accent:#d9a44a; --accent-ink:#2b1d09; --accent-soft:#3a2f18;
+  --wrong:#e29383; --wrong-soft:#3d241e; --partial:#d9a44a; --partial-soft:#3a2f18;
+  --right:#8caf9c; --right-soft:#233a30; color-scheme:dark;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg); color:var(--ink); font-family:'Work Sans','Segoe UI',sans-serif; padding-inline:16px; padding-block:28px 110px; max-width:760px; margin:0 auto;}
+h1,h2{font-family:'Spectral',Georgia,serif; text-wrap:balance; margin:0;}
+.lat{font-family:'IBM Plex Mono','Courier New',monospace;}
+header.page{margin-bottom:24px; position:relative;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); display:inline-block; padding:.25em .6em; border-radius:3px; margin-bottom:.9em;}
+h1{font-size:clamp(1.5rem,5vw,2rem); font-weight:600;}
+.subtitle{color:var(--ink-soft); font-size:.95rem; margin-top:.5em; max-width:62ch;}
+.themebtn{position:absolute; top:0; right:0; background:var(--surface); border:1px solid var(--line); color:var(--ink); border-radius:20px; padding:6px 12px; font-size:.78rem; cursor:pointer; font-family:inherit;}
+section.block{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px 20px 22px; margin-bottom:18px;}
+.block-head{display:flex; align-items:baseline; gap:.6em; margin-bottom:.3em;}
+.block-num{font-family:'Spectral',serif; font-weight:600; font-size:.95rem; color:var(--accent-ink); background:var(--accent-soft); padding:.15em .6em; border-radius:12px; flex-shrink:0;}
+.block-title{font-family:'Spectral',serif; font-size:1.08rem; font-weight:600;}
+.block-sub{color:var(--ink-soft); font-size:.83rem; margin:.2em 0 1em 0;}
+.block-max{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:.76rem; color:var(--ink-soft); white-space:nowrap;}
+.item{display:flex; flex-wrap:wrap; align-items:center; gap:.5em; padding:.5em 0; border-top:1px dashed var(--line); font-size:.95rem;}
+.item:first-of-type{border-top:none;}
+.item .word{font-family:'Work Sans',sans-serif; min-width:0; flex:1 1 auto;}
+.item input[type=text]{font-family:'IBM Plex Mono',monospace; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); border-radius:5px; padding:.32em .5em; font-size:.88rem; width:9.5em;}
+.item input[type=text].narrow{width:3.6em;}
+.item input.correct{border-color:var(--right); background:var(--right-soft);}
+.item input.wrong{border-color:var(--wrong); background:var(--wrong-soft);}
+.item .fb{font-size:.85rem; font-family:'IBM Plex Mono',monospace; width:1.2em;}
+.item .fb.ok{color:var(--right);} .item .fb.no{color:var(--wrong);}
+.open-item{padding:.8em 0; border-top:1px dashed var(--line);}
+.open-item:first-of-type{border-top:none;}
+.open-q{font-family:'IBM Plex Mono',monospace; font-weight:600; margin-bottom:.5em;}
+.reveal-btn{background:var(--accent-soft); color:var(--accent-ink); border:none; border-radius:5px; padding:.4em .8em; font-size:.8rem; cursor:pointer; font-family:inherit;}
+.answer{margin-top:.6em; padding:.7em .8em; background:var(--surface-2); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; font-size:.88rem; display:none;}
+.answer.shown{display:block;}
+.grade-row{margin-top:.6em; display:none; gap:.5em;}
+.grade-row.shown{display:flex;}
+.grade-btn{border:1px solid var(--line); background:var(--surface); border-radius:5px; padding:.3em .65em; font-size:.78rem; cursor:pointer; font-family:'IBM Plex Mono',monospace; color:var(--ink);}
+.grade-btn.active-fout{background:var(--wrong-soft); border-color:var(--wrong); color:var(--wrong);}
+.grade-btn.active-deels{background:var(--partial-soft); border-color:var(--partial); color:var(--partial);}
+.grade-btn.active-juist{background:var(--right-soft); border-color:var(--right); color:var(--right);}
+.scoreboard{position:fixed; left:0; right:0; bottom:0; background:var(--surface); border-top:1px solid var(--line); padding:.65em 16px calc(.65em + env(safe-area-inset-bottom,0px)); display:flex; flex-direction:column; gap:.3em; box-shadow:0 -4px 18px rgba(0,0,0,.08);}
+.score-top{display:flex; justify-content:space-between; align-items:baseline; font-family:'IBM Plex Mono',monospace;}
+.score-total{font-weight:700; font-size:1rem;}
+.score-pct{color:var(--ink-soft); font-size:.82rem;}
+.score-bar{height:7px; background:var(--surface-2); border-radius:4px; overflow:hidden;}
+.score-fill{height:100%; background:var(--accent); width:0%; transition:width .3s;}
+.reset-link{position:absolute; top:.55em; right:16px; font-size:.7rem; color:var(--ink-soft); background:none; border:none; text-decoration:underline; cursor:pointer; font-family:inherit;}
+.subhead{font-family:'Spectral',serif; font-weight:600; font-size:.95rem; color:var(--accent-ink); margin:1.1em 0 .3em;}
+.subhead:first-child{margin-top:0;}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>📚 Latijn Herhalingsoefeningen – GEVORDERD</h1>
-        <div class="subtitle">Hoofdstukken 1.2, 1.3, 1.4 — Moeilijker niveau ter voorbereiding toets</div>
-        <div class="info">
-            ⚠️ Deze oefeningen zijn moeilijker dan de basis-versie. Probeer goed na te denken en alles volledig uit te werken!
-        </div>
+<header class="page">
+  <button class="themebtn" id="themeToggle">🌓 Thema</button>
+  <div class="eyebrow">Caput 1 · Theātrum — woordenlijst 1–131</div>
+  <h1>Volledige Woordenschat</h1>
+  <p class="subtitle">Alle woorden van p. 3 t/m p. 8 (1.2 t/m 1.12) + de groene kaders. Je krijgt telkens het Latijnse grondwoord — typ de middenkolom (genitief + genus bij substantieven, 1ste persoon bij werkwoorden) <i>en</i> de Nederlandse vertaling.</p>
+</header>
 
-        <!-- DEEL 1: COMPLEXE VERVOEGING -->
-        <div class="section">
-            <h2>DEEL 1: Gemengde vervoeging-oefeningen</h2>
-            <p style="margin-bottom: 15px; color: #666;">Vul alle vormen in. Let op: verschillende declensies!</p>
+<section class="block"><div class="block-head"><div class="block-num">1.2</div><div class="block-title">Substantieven — grondlijst</div><div class="block-max" id="max-s2"></div></div><div id="s2"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> **ars, artis (f.)** – Wat kun je zeggen over deze vorm? <span class="moeilijkheid">MOEILIJK</span></div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nom.</th>
-                            <th>Gen.</th>
-                            <th>Dat.</th>
-                            <th>Acc.</th>
-                            <th>Abl.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Singularis</th>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                        </tr>
-                        <tr>
-                            <th>Pluralis</th>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Juiste vormen (3e declinatie, vrouwelijk):</div>
-                    <strong>Singularis:</strong> ars, artis, arti, artem, arte<br>
-                    <strong>Pluralis:</strong> artes, artium, artibus, artes, artibus
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Mannelijk → vrouwelijk</div><div class="block-max" id="max-sk1"></div></div><p class="block-sub">Van sommige 1ste-klasse woorden bestaat een aparte vrouwelijke vorm.</p><div id="sk1"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> **manus, -ûs (f.)** – Deze declinatie is tricky! <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Hint: dit is de 4e declinatie!</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nom.</th>
-                            <th>Gen.</th>
-                            <th>Dat.</th>
-                            <th>Acc.</th>
-                            <th>Abl.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>Singularis</th>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                        </tr>
-                        <tr>
-                            <th>Pluralis</th>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td><input type="text" placeholder=""></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Juiste vormen (4e declinatie, vrouwelijk):</div>
-                    <strong>Singularis:</strong> manus, manûs, manui, manum, manû<br>
-                    <strong>Pluralis:</strong> manûs, manuum, manibus, manûs, manibus
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">1.3</div><div class="block-title">Substantieven, werkwoordvormen, bijwoorden &amp; voegwoorden</div><div class="block-max" id="max-s3"></div></div><div id="s3"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">3.</span> **dies, -ei (m./f.)** – 5e declinatie! <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <div class="hint">Hint: dit is zeldzaam en moeilijk. Je mag ook "dag" gebruiken voor nom. sing. als antwoord.</div>
-                <input type="text" placeholder="Nominatief singularis" class="invoer-vak">
-                <input type="text" placeholder="Genitief singularis" class="invoer-vak">
-                <input type="text" placeholder="Ablatief singularis" class="invoer-vak">
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Juiste vormen (5e declinatie):</div>
-                    Nominatief: dies, Genitief: diei, Ablatief: die
-                </div>
-            </div>
-        </div>
+<section class="block"><div class="block-head"><div class="block-num">1.4</div><div class="block-title">Substantieven &amp; bijwoorden</div><div class="block-max" id="max-s4"></div></div><div id="s4"></div></section>
 
-        <!-- DEEL 2: LASTIGE NAAMVAL-COMBINATIES -->
-        <div class="section">
-            <h2>DEEL 2: Naamvallen in complexe zinnen</h2>
-            <p style="margin-bottom: 15px; color: #666;">Moeilijkere tekstfragmenten – bepaal alle naamvallen EN functies!</p>
+<section class="block"><div class="block-head"><div class="block-num">1.5</div><div class="block-title">Substantieven &amp; overig</div><div class="block-max" id="max-s5"></div></div><div id="s5"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> "Tyranni militibus arma et pecuniam negabant" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Kijk goed: dit zijn meerdere voorwerpen!</div>
-                <div style="margin: 12px 0; padding: 12px; background: #f0f0f0; border-radius: 6px; font-size: 14px;">
-                    <strong>Welke naamvallen:</strong><br>
-                    - militibus: <input type="text" placeholder="" class="invoer-vak" style="display: inline; width: 120px; margin: 0 5px;"><br>
-                    - arma: <input type="text" placeholder="" class="invoer-vak" style="display: inline; width: 120px; margin: 0 5px;"><br>
-                    - pecuniam: <input type="text" placeholder="" class="invoer-vak" style="display: inline; width: 120px; margin: 0 5px;">
-                </div>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Correct:</div>
-                    militibus = Datief (indirekt object: aan wie?)<br>
-                    arma = Accusatief (lijdend voorwerp: wat?)<br>
-                    pecuniam = Accusatief (lijdend voorwerp: wat?)
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Genus: woorden op -us zijn niet altijd mannelijk</div><div class="block-max" id="max-sk2"></div></div><p class="block-sub">corpus, onus, sīdus, tempus zijn alle vier onzijdig.</p><div id="sk2"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> "Hecuba infantem dolore et metu obsessa est" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Let op: "obsessa est" = passivum (lijdend)!</div>
-                <textarea class="invoer-vak" placeholder="Wat zijn de naamvallen van: infantem, dolore, metu? (en hun functies?)"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Correct:</div>
-                    infantem = Accusatief (lijdend onderwerp bij passivum)<br>
-                    dolore = Ablatief (middel: waarmee?)<br>
-                    metu = Ablatief (middel: waardoor?)
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">1.6</div><div class="block-title">Substantief, werkwoorden &amp; bijwoorden</div><div class="block-max" id="max-s6"></div></div><div id="s6"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">3.</span> "Dionysius civium fiducia caruit" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">"carere" = ontberen + ablatief. Wat miste Dionysius?</div>
-                <div class="multi-input">
-                    <input type="text" placeholder="Naamval van 'civium'" class="invoer-vak">
-                    <input type="text" placeholder="Functie (type)" class="invoer-vak">
-                </div>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Correct:</div>
-                    civium = Genitief | Functie: vertrouwensobject (vertrouwen van wie?)
-                </div>
-            </div>
-        </div>
+<section class="block"><div class="block-head"><div class="block-num">1.7</div><div class="block-title">Substantieven, werkwoorden &amp; bijwoorden</div><div class="block-max" id="max-s7"></div></div><div id="s7"></div></section>
 
-        <!-- DEEL 3: LASTIGE VERTALINGEN -->
-        <div class="section">
-            <h2>DEEL 3: Vertalingen met geavanceerde structuur</h2>
-            <p style="margin-bottom: 15px; color: #666;">Deze zinnen hebben meerdere voorzetsels en naamvallen!</p>
+<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Substantieven op -es</div><div class="block-max" id="max-sk3"></div></div><p class="block-sub">Niet alle woorden op -es zijn meervoud!</p><div id="sk3"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> "Idem tyrannus cum servis suis in cubiculo cubare solebat" <span class="moeilijkheid">MOEILIJK</span></div>
-                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
-                    "Die zelfde tiran placht met zijn slaven in de slaapkamer te slapen" of "... samen met zijn bedienden in de kamer te rusten"
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">1.8</div><div class="block-title">Substantieven, bijvoeglijke naamwoorden, werkwoorden &amp; overig</div><div class="block-max" id="max-s8"></div></div><div id="s8"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> "Hercules ab omnibus civibus admirabilis et fortissimus videbatur" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Passivum + dubbele praedicaatsadjectief!</div>
-                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
-                    "Hercules leek door alle burgers bewonderenswaardig en zeer sterk" of "Iedereen vond Hercules wonderbaarlijk en zeer dapper"
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">1.9</div><div class="block-title">Werkwoorden, bijvoeglijke naamwoorden &amp; bijwoord</div><div class="block-max" id="max-s9"></div></div><div id="s9"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">3.</span> "Magistri discipulos ex oculis nunquam dimittebant, ferula severâ eos puniebant" <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <div class="hint">Twee zinnen! Zorg je de voorzetsels goed analyseert!</div>
-                <textarea class="invoer-vak" placeholder="Nederlandse vertaling"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Mogelijke vertaling:</div>
-                    "De leraren lieten de leerlingen nooit uit het oog; zij strafte hen met een strenge roede" of "De leraren verloren de leerlingen nooit uit het zicht; zij sloegen hen met een harde zweep"
-                </div>
-            </div>
-        </div>
+<section class="block"><div class="block-head"><div class="block-num">1.10</div><div class="block-title">Bijvoeglijke naamwoorden &amp; voegwoorden</div><div class="block-max" id="max-s10"></div></div><div id="s10"></div></section>
 
-        <!-- DEEL 4: ADJECTIEF-ANALYSES -->
-        <div class="section">
-            <h2>DEEL 4: Adjectieven in context</h2>
-            <p style="margin-bottom: 15px; color: #666;">Zeg naamval, geslacht EN getal van de adjectieven!</p>
+<section class="block"><div class="block-head"><div class="block-num">1.11</div><div class="block-title">Bijvoeglijke naamwoorden &amp; bijwoord</div><div class="block-max" id="max-s11"></div></div><div id="s11"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> "Magnus duces populum Romanum gubernabant cum sâpientiâ" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Wat beschrijft "magnus"? En wat is "sâpientiâ"?</div>
-                <div class="multi-input">
-                    <input type="text" placeholder="magnus: naamval?" class="invoer-vak">
-                    <input type="text" placeholder="magnus: geslacht?" class="invoer-vak">
-                </div>
-                <input type="text" placeholder="sâpientiâ: naamval?" class="invoer-vak">
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Correct:</div>
-                    magnus = Nominatief (beschrijft duces) | Manlijk meervoud<br>
-                    sâpientiâ = Ablatief (middel: waarmee?)
-                </div>
-            </div>
+<section class="block"><div class="block-head"><div class="block-num">1.12</div><div class="block-title">Telwoorden 1–10, 100, 1000</div><div class="block-max" id="max-s12"></div></div><div id="s12"></div></section>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> "Filiae tristis Hecubae dolorem patientissimâ anima tulerunt" <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Meerdere adjectieven! Let op het geslacht en getal!</div>
-                <textarea class="invoer-vak" placeholder="Naamval, geslacht, getal van: tristis, patientissimâ"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie antwoord</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Correct:</div>
-                    tristis = Nominatief, vrouwelijk, meervoud (beschrijft filiae)<br>
-                    patientissimâ = Ablatief, vrouwelijk, singularis (beschrijft animâ)
-                </div>
-            </div>
-        </div>
+<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Woordvolgorde: quoque &amp; enim</div><div class="block-max" id="max-sk4"></div></div><p class="block-sub">Vertaal en let op de plaats van quoque/enim.</p><div id="sk4"></div></section>
 
-        <!-- DEEL 5: OPEN ANALYSEVRAGEN -->
-        <div class="section">
-            <h2>DEEL 5: Diepgaande tekstverstaan</h2>
-            <p style="margin-bottom: 15px; color: #666;">Schrijf volledige antwoorden met verklaring!</p>
+<p style="text-align:center;"><button class="reset-link" id="resetBtn" type="button" style="position:static;">score resetten</button></p>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> Vergelijk het karakter van Dionysus en Hercules. Wat is het verschil? <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <textarea class="invoer-vak" placeholder="Jouw antwoord (zeg minstens 3 verschillen)"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">💡 Suggestie:</div>
-                    Dionysus was wantrouwend, bang, listig, gebruikte fraude, had geen vertrouwen. Hercules was sterk, dapper, eerlijk, trainde zijn lichaam, werd bewonderd. Dionysus verliest vrienden door zijn angst; Hercules wint vrienden door zijn deugden. Dionysus is ongelukkig door macht; Hercules is gelukkig door zijn karakter.
-                </div>
-            </div>
+<div class="scoreboard">
+  <div class="score-top"><span>Score</span><span class="score-total"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></span><span class="score-pct" id="scorePct">0%</span></div>
+  <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+</div>
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> Wat was het orakel in De Paride en waarom was het (uiteindelijk) juist? <span class="moeilijkheid">MOEILIJK</span></div>
-                <textarea class="invoer-vak" placeholder="Verklaar de voorspelling en hoe het uitkwam"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">💡 Suggestie:</div>
-                    Het orakel zei dat de zoon van Hecuba Troje zou vernietigen. Dit leek onwaarschijnlijk, dus ze probeerden hem dood te maken. Maar het kind (Paris) werd gered. Later was Paris inderdaad de oorzaak van de Trojaanse Oorlog (door Helena weg te voeren), waardoor Troje werd verwoest. Het orakel was dus juist – je kan je lot niet ontsnappen!
-                </div>
-            </div>
+<script>
+(function(){
+"use strict";
+var LS_KEY = "latijn-georges-woordenschat-131-v1";
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">3.</span> Waarom kon Dionysus niet tegelijk machtig EN gelukkig zijn? Verklaar met voorbeelden. <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <textarea class="invoer-vak" placeholder="Filosofische vraag - denk goed na!"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">💡 Suggestie:</div>
-                    Omdat macht zonder vertrouwen voert tot angst. Dionysus vertrouwde niemand (ook niet zijn eigen zoon) → altijd bang voor vergiftiging → kon niet vrij eten. Hij gebruikte fraude → kon niet vrij eten met anderen → geen vriendschap. Waar hij ook zat, hij was voorzichtig (beddenpoort sluiten, zwaard weggeven). Angst maakt ongelukkig. Echte geluk komt uit vrijheid en vertrouwen, niet uit macht.
-                </div>
-            </div>
-        </div>
+function normalize(s){
+  return (s||"").toString().trim().toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[-.,~]/g," ")
+    .replace(/\s+/g," ").trim();
+}
+var scores = {}, maxes = {};
+function loadState(){
+  try{ var raw = localStorage.getItem(LS_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return {fills:{}, grades:{}, revealed:{}};
+}
+var state = loadState();
+function saveState(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+function updateScoreboard(){
+  var total=0,max=0;
+  for(var k in maxes){ if(maxes.hasOwnProperty(k)){ max+=maxes[k]; total+=(scores[k]||0); } }
+  document.getElementById("scoreNow").textContent=(Math.round(total*10)/10).toString();
+  document.getElementById("scoreMax").textContent=max.toString();
+  var pct = max? Math.round((total/max)*100):0;
+  document.getElementById("scorePct").textContent=pct+"%";
+  document.getElementById("scoreFill").style.width=pct+"%";
+}
 
-        <!-- DEEL 6: GRAMMATICA TOEPASSEN -->
-        <div class="section">
-            <h2>DEEL 6: Zelf constructies maken</h2>
-            <p style="margin-bottom: 15px; color: #666;">Schrijf Latijnse zinnen met geavanceerde structuren!</p>
+function makeFillItem(container, id, label, fields){
+  var div=document.createElement("div"); div.className="item";
+  var w=document.createElement("span"); w.className="word"; w.innerHTML=label; div.appendChild(w);
+  var maxPts=fields.length; maxes[id]=maxPts; scores[id]=0;
+  var inputs=[];
+  fields.forEach(function(f,idx){
+    var inp=document.createElement("input"); inp.type="text"; inp.id=id+"_f"+idx;
+    inp.className = f.width==="narrow" ? "narrow" : "";
+    inp.setAttribute("data-accept", f.accept);
+    inp.autocomplete="off"; inp.spellcheck=false;
+    inp.value = state.fills[inp.id]!==undefined ? state.fills[inp.id] : "";
+    div.appendChild(inp); inputs.push(inp);
+  });
+  var fb=document.createElement("span"); fb.className="fb"; fb.id=id+"_fb"; div.appendChild(fb);
+  container.appendChild(div);
+  function checkAll(){
+    var earned=0, allFilled=true;
+    inputs.forEach(function(inp){
+      var accept=inp.getAttribute("data-accept").split("|").map(normalize);
+      var val=normalize(inp.value);
+      if(!val){ allFilled=false; inp.classList.remove("correct","wrong"); return; }
+      if(accept.indexOf(val)!==-1){ inp.classList.add("correct"); inp.classList.remove("wrong"); earned+=1; }
+      else { inp.classList.add("wrong"); inp.classList.remove("correct"); }
+    });
+    scores[id]=earned;
+    if(!allFilled && earned===0){ fb.textContent=""; fb.className="fb"; }
+    else if(earned===maxPts){ fb.textContent="✓"; fb.className="fb ok"; }
+    else { fb.textContent="✗"; fb.className="fb no"; }
+    updateScoreboard(); saveState();
+  }
+  inputs.forEach(function(inp){
+    inp.addEventListener("blur", function(){ state.fills[inp.id]=inp.value; checkAll(); });
+    inp.addEventListener("keydown", function(e){ if(e.key==="Enter"){ inp.blur(); } });
+  });
+  if(inputs.some(function(inp){return inp.value;})) checkAll();
+}
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">1.</span> Schrijf een zin met: nominatief + dativus possessivus + werkwoord <span class="moeilijkheid">MOEILIJK</span></div>
-                <div class="hint">Bijv: "Civibus pax erat" (Aan de burgers was vrede = De burgers hadden vrede)</div>
-                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Voorbeeld:</div>
-                    "Regi gloria erat" (De koning had glorie) of "Militibus virtus erat" (De soldaten hadden moed)
-                </div>
-            </div>
+function makeOpenItem(container, id, question, answerHtml, maxPts){
+  maxPts=maxPts||1; maxes[id]=maxPts; scores[id]=state.grades[id]!==undefined?state.grades[id]:0;
+  var div=document.createElement("div"); div.className="open-item";
+  var q=document.createElement("div"); q.className="open-q"; q.innerHTML=question; div.appendChild(q);
+  var btn=document.createElement("button"); btn.className="reveal-btn"; btn.type="button"; btn.textContent="Toon antwoord"; div.appendChild(btn);
+  var ans=document.createElement("div"); ans.className="answer"; ans.innerHTML=answerHtml; div.appendChild(ans);
+  var gradeRow=document.createElement("div"); gradeRow.className="grade-row";
+  var opts=[{key:"fout",label:"Fout",val:0},{key:"deels",label:"Deels",val:maxPts*0.5},{key:"juist",label:"Juist",val:maxPts}];
+  opts.forEach(function(o){
+    var b=document.createElement("button"); b.className="grade-btn"; b.type="button"; b.textContent=o.label;
+    b.addEventListener("click", function(){
+      scores[id]=o.val; state.grades[id]=o.val;
+      Array.prototype.forEach.call(gradeRow.children, function(c){ c.className="grade-btn"; });
+      b.className="grade-btn active-"+o.key;
+      updateScoreboard(); saveState();
+    });
+    gradeRow.appendChild(b);
+  });
+  div.appendChild(gradeRow);
+  function reveal(){ ans.classList.add("shown"); gradeRow.classList.add("shown"); state.revealed[id]=true; saveState(); }
+  btn.addEventListener("click", reveal);
+  if(state.revealed[id]) reveal();
+  if(state.grades[id]!==undefined){
+    var matched=opts.filter(function(o){return o.val===state.grades[id];})[0];
+    if(matched){ Array.prototype.forEach.call(gradeRow.children,function(c){ if(c.textContent===matched.label) c.className="grade-btn active-"+matched.key; }); }
+  }
+  container.appendChild(div);
+}
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">2.</span> Schrijf een zin met: voorzetsels (in/ab/cum) + accusatief EN ablatief <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <div class="hint">Bijv: "Hercules cum clava in montem ascendit" (Hercules klom met zijn knuppel de berg op)</div>
-                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin (2 voorzetsels!)"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Voorbeeld:</div>
-                    "Dux cum militibus ab oppido in regnum venit" (De aanvoerder kwam met soldaten van de stad naar het koninkrijk)
-                </div>
-            </div>
+/* generic vocab renderer — Latijn gegeven, middenkolom + vertaling gevraagd
+   row: [latijn, middenkolomAccept|null, vertalingAccept]
+*/
+function genusAccept(g){ return g==="v" ? "v|vrouwelijk" : g==="m" ? "m|mannelijk" : "o|onzijdig"; }
+function renderVocab(container, prefix, rows){
+  var count = 0;
+  rows.forEach(function(row, i){
+    var lat=row[0], mid=row[1], vert=row[2];
+    var fields=[];
+    if(mid){ fields.push({accept:mid, width:""}); }
+    fields.push({accept:vert, width:""});
+    makeFillItem(container, prefix+"_"+i, "<span class='lat'>"+lat+"</span>", fields);
+    count += fields.length;
+  });
+  return count;
+}
+function setMax(id, container){
+  var m=0; for(var k in maxes){ if(maxes.hasOwnProperty(k) && k.indexOf(id+"_")===0) m+=maxes[k]; }
+  var el=document.getElementById("max-"+id); if(el) el.textContent="/"+m;
+}
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">3.</span> Schrijf een zin met: genitief van bezit + praedicaatsadjectief + passivum <span class="moeilijkheid">HEEL MOEILIJK</span></div>
-                <div class="hint">Bijv: "Liber magistri pulcher videbatur" (Het boek van de leraar leek mooi)</div>
-                <textarea class="invoer-vak" placeholder="Jouw Latijnse zin (genitief + adjectief + passivum!)"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie voorbeeld</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Voorbeeld:</div>
-                    "Arma Herculis fortissima et admirabilia iudicabantur" (De wapens van Hercules werden als zeer sterk en bewonderenswaardig beoordeeld)
-                </div>
-            </div>
-        </div>
+/* ============ 1.2 ============ */
+var s2rows = [
+  ["amicus","amici m","de vriend"],
+  ["deus","dei m","de god"],
+  ["dominus","domini m","de meester"],
+  ["equus","equi m","het paard"],
+  ["filius","filii m","de zoon"],
+  ["servus","servi m","de slaaf"],
+  ["aqua","aquae v","het water"],
+  ["familia","familiae v","het gezin, het personeel"],
+  ["via","viae v","de weg"],
+  ["monumentum","monumenti o","het monument, het aandenken"],
+  ["templum","templi o","de tempel"],
+  ["vinum","vini o","de wijn"],
+  ["pater","patris m","de vader"],
+  ["senex","senis m","de oude man"],
+  ["virgo","virginis v","de maagd, het meisje"],
+  ["vox","vocis v","de stem, het woord"],
+  ["flumen","fluminis o","de rivier"],
+  ["sidus","sideris o","de ster, het sterrenbeeld"]
+];
+renderVocab(document.getElementById("s2"), "s2", s2rows);
+setMax("s2", "s2");
 
-        <!-- BONUS: GEAVANCEERDE NAAMVAL-MATCHING -->
-        <div class="section">
-            <h2>BONUS: Uitdaging – Naamvallen in volledige passage</h2>
-            <p style="margin-bottom: 15px; color: #666;">Analyseer deze complete zin volledig!</p>
+/* ============ kader: mannelijk -> vrouwelijk ============ */
+var sk1 = document.getElementById("sk1");
+[["amicus → vrouwelijke vorm?","amica"],["deus → vrouwelijke vorm?","dea"],["dominus → vrouwelijke vorm?","domina"],["filius → vrouwelijke vorm?","filia"],["servus → vrouwelijke vorm?","serva"]].forEach(function(row,i){
+  makeFillItem(sk1, "sk1_"+i, row[0], [{accept:row[1], width:""}]);
+});
+setMax("sk1","sk1");
 
-            <div class="oefening">
-                <div class="vraag"><span class="oefening-nummer">CHALLENGE:</span> "Hecuba, infantis amore mota, filium carissimum ab morte ferreis artibus servavit, sed tyrannus asper civium victoriam praedixit et mortis copias armavit." <span class="moeilijkheid">ZEER MOEILIJK</span></div>
-                <div class="hint">Dit is moeilijk! Werk stap voor stap: nominatief (underwerp), adjectieven, genitief (bezit), werkwoorden, ablatief (middel)</div>
-                <textarea class="invoer-vak" placeholder="Volledige grammaticale analyse: geef naamval + functie van ALLE naamwoorden en adjectieven"></textarea>
-                <button class="antwoord-btn" onclick="toonAntwoord(this)">Zie suggestie</button>
-                <div class="antwoord-box">
-                    <div class="antwoord-label">✓ Analyse:</div>
-                    Hecuba = Nom. (onderwerp)<br>
-                    infantis = Gen. (bezit: van het kind)<br>
-                    amore = Ablatief (middel/oorzaak: door liefde)<br>
-                    mota = Nom. (adjectief bij Hecuba)<br>
-                    filium = Acc. (lijdend voorwerp)<br>
-                    carissimum = Acc. (adjectief bij filium)<br>
-                    morte = Ablatief (plaats/richting: van de dood)<br>
-                    ferreis = Ablatief (adjectief bij artibus)<br>
-                    artibus = Ablatief (middel: waarmee)<br>
-                    tyrannus = Nom. (onderwerp 2e zin)<br>
-                    asper = Nom. (adjectief bij tyrannus)<br>
-                    civium = Gen. (bezit: van burgers)<br>
-                    victoriam = Acc. (lijdend voorwerp)<br>
-                    mortis = Gen. (bezit: van de dood)<br>
-                    copias = Acc. (lijdend voorwerp)
-                </div>
-            </div>
-        </div>
+/* ============ 1.3 ============ */
+var s3rows = [
+  ["femina","feminae v","de vrouw"],
+  ["canis","canis m","de hond"],
+  ["iuvenis","iuvenis m","de jongeman"],
+  ["mercator","mercatoris m","de handelaar"],
+  ["miles","militis m","de soldaat"],
+  ["senator","senatoris m","de senator"],
+  ["nox","noctis v","de nacht"],
+  ["caput","capitis o","het hoofd, het hoofdstuk"]
+];
+renderVocab(document.getElementById("s3"), "s3", s3rows);
+var s3other = [
+  ["est",null,"(hij/zij/het/er) is"],
+  ["sunt",null,"(zij/er) zijn"],
+  ["ibi",null,"daar"],
+  ["saepe",null,"dikwijls"],
+  ["aut",null,"of"],
+  ["et",null,"en, ook"],
+  ["-que",null,"en"],
+  ["sed",null,"maar"]
+];
+renderVocab(document.getElementById("s3"), "s3b", s3other);
+setMax("s3","s3");
 
-        <!-- TIPS -->
-        <div class="tips">
-            <h3>🎯 Examen Tips voor morgen!</h3>
-            <ul>
-                <li><strong>Lees ALLES goed!</strong> Een verkeerd gelezen woord = verkeerd antwoord</li>
-                <li><strong>Onderstreep werkwoorden:</strong> Dat helpt je bepalen welke naamval nodig is</li>
-                <li><strong>Voorzetsels onthouden:</strong> in+abl=waar? | in+acc=waar heen? | cum+abl=waarmee?</li>
-                <li><strong>Adjectieven checken:</strong> Staan ze in dezelfde naamval, geslacht, getal als hun naamwoord?</li>
-                <li><strong>Dubbele check:</strong> Als je een naamval schrijft, vraag jezelf af: waarom dit antwoord?</li>
-                <li><strong>Passivum herkennen:</strong> -batur, -tur vormen = lijdend (iemand WORDT iets)</li>
-                <li><strong>Rustig blijven:</strong> Je hebt dit geoefend! Zorg voor goede slaap vanavond 😴</li>
-            </ul>
-        </div>
-    </div>
+/* ============ 1.4 ============ */
+var s4rows = [
+  ["avus","avi m","de grootvader"],
+  ["rosa","rosae v","de roos"],
+  ["donum","doni o","het geschenk"],
+  ["dux","ducis m","de leider"],
+  ["mater","matris v","de moeder"],
+  ["corpus","corporis o","het lichaam"]
+];
+renderVocab(document.getElementById("s4"), "s4", s4rows);
+var s4other=[["iam",null,"al, dadelijk"],["interdum",null,"soms"],["quoque",null,"ook"],["enim",null,"want"]];
+renderVocab(document.getElementById("s4"), "s4b", s4other);
+setMax("s4","s4");
 
-    <script>
-        function toonAntwoord(btn) {
-            const antwoordBox = btn.nextElementSibling;
-            antwoordBox.classList.toggle('show');
-            btn.textContent = antwoordBox.classList.contains('show') ? 'Verberg antwoord' : 'Zie antwoord';
-        }
+/* ============ 1.5 ============ */
+var s5rows = [
+  ["curia","curiae v","de curia (het Romeinse senaatsgebouw)"],
+  ["fabula","fabulae v","het verhaal, het toneelstuk"],
+  ["luna","lunae v","de maan"],
+  ["forum","fori o","het forum (het Romeinse marktplein)"],
+  ["iudex","iudicis m","de rechter"],
+  ["onus","oneris o","de last"],
+  ["tempus","temporis o","de tijd, het moment"]
+];
+renderVocab(document.getElementById("s5"), "s5", s5rows);
+var s5other=[["non",null,"niet"],["semper",null,"altijd"]];
+renderVocab(document.getElementById("s5"), "s5b", s5other);
+setMax("s5","s5");
 
-        document.querySelectorAll('.antwoord-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (this.nextElementSibling.classList.contains('show')) {
-                    setTimeout(() => {
-                        this.nextElementSibling.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 100);
-                }
-            });
-        });
-    </script>
+/* ============ kader: genus -us ============ */
+var sk2 = document.getElementById("sk2");
+[["corpus","o"],["onus","o"],["sidus","o"],["tempus","o"]].forEach(function(row,i){
+  makeFillItem(sk2, "sk2_"+i, row[0]+" — genus?", [{accept:genusAccept(row[1]), width:"narrow"}]);
+});
+setMax("sk2","sk2");
+
+/* ============ 1.6 ============ */
+var s6rows=[["statua","statuae v","het standbeeld"],["eques","equitis m","de ruiter, de ridder"]];
+renderVocab(document.getElementById("s6"), "s6", s6rows);
+var s6verbs=[
+  ["laborare","laboro","werken, lijden"],
+  ["apparere","appareo","verschijnen, blijken"],
+  ["dormire","dormio","slapen"]
+];
+renderVocab(document.getElementById("s6"), "s6v", s6verbs);
+var s6other=[
+  ["domi",null,"thuis"],
+  ["etiam",null,"ook, zelfs"],
+  ["nondum",null,"nog niet"],
+  ["non iam",null,"niet meer"],
+  ["nunc",null,"nu"]
+];
+renderVocab(document.getElementById("s6"), "s6b", s6other);
+setMax("s6","s6");
+
+/* ============ 1.7 ============ */
+var s7rows=[["theatrum","theatri o","het theater"],["mulier","mulieris v","de vrouw"],["uxor","uxoris v","de echtgenote"]];
+renderVocab(document.getElementById("s7"), "s7", s7rows);
+var s7verbs=[
+  ["cogitare","cogito","(na)denken"],
+  ["dare","do","geven"],
+  ["narrare","narro","vertellen"],
+  ["properare","propero","zich haasten"],
+  ["rogare","rogo","vragen"],
+  ["spectare","specto","(be)kijken, op het oog hebben"],
+  ["stare","sto","staan, blijven staan"],
+  ["gaudere","gaudeo","blij zijn"],
+  ["habere","habeo","hebben, beschouwen als"],
+  ["respondere","respondeo","antwoorden"],
+  ["sedere","sedeo","zitten"],
+  ["videre","video","zien"],
+  ["aperire","aperio","openen, onthullen"],
+  ["venire","venio","komen"],
+  ["esse","sum","zijn, bestaan"]
+];
+renderVocab(document.getElementById("s7"), "s7v", s7verbs);
+var s7other=[
+  ["cur",null,"waarom?"],
+  ["domum",null,"naar huis"],
+  ["ideo",null,"daarom"],
+  ["interea",null,"intussen"]
+];
+renderVocab(document.getElementById("s7"), "s7b", s7other);
+setMax("s7","s7");
+
+/* ============ kader: substantieven op -es ============ */
+var sk3 = document.getElementById("sk3");
+makeOpenItem(sk3, "sk3_0", "Wat is het meervoud van <span class='lat'>eques</span> (de ruiter)?", "<span class='lat'>equitēs</span> (eques zelf is enkelvoud!)", 1);
+makeOpenItem(sk3, "sk3_1", "Wat is het meervoud van <span class='lat'>mīles</span> (de soldaat)?", "<span class='lat'>mīlitēs</span> (mīles zelf is enkelvoud!)", 1);
+setMax("sk3","sk3");
+
+/* ============ 1.8 ============ */
+var s8rows=[["finis","finis m","de grens, het einde, het doel"],["iter","itineris o","de reis, de weg"]];
+renderVocab(document.getElementById("s8"), "s8", s8rows);
+var s8nouns2=[["pecunia","pecuniae v","het geld"],["aedificium","aedificii o","het gebouw"],["spectaculum","spectaculi o","het schouwspel"]];
+renderVocab(document.getElementById("s8"), "s8c", s8nouns2);
+var s8adj=[
+  ["laetus","a um","vrolijk"],
+  ["latus","a um","breed, uitgestrekt"],
+  ["longus","a um","lang"],
+  ["magnus","a um","groot, belangrijk"],
+  ["optimus","a um","beste, zeer goed"],
+  ["timidus","a um","bang"]
+];
+renderVocab(document.getElementById("s8"), "s8b", s8adj);
+var s8verbsother=[["clamare","clamo","roepen"],["invenire","invenio","vinden, ontdekken"]];
+renderVocab(document.getElementById("s8"), "s8d", s8verbsother);
+var s8other=[["tum",null,"op dat moment"],["dum",null,"terwijl"]];
+renderVocab(document.getElementById("s8"), "s8e", s8other);
+setMax("s8","s8");
+
+/* ============ 1.9 ============ */
+var s9verbs=[["amare","amo","beminnen, houden van"],["monere","moneo","waarschuwen"],["audire","audio","horen, luisteren naar"]];
+renderVocab(document.getElementById("s9"), "s9", s9verbs);
+var s9adj=[["altus","a um","hoog, diep"],["magnificus","a um","prachtig"],["multi","ae a","veel"],["novus","a um","nieuw"],["Romanus","a um","Romeins"]];
+renderVocab(document.getElementById("s9"), "s9b", s9adj);
+renderVocab(document.getElementById("s9"), "s9c", [["subito",null,"plotseling"]]);
+setMax("s9","s9");
+
+/* ============ 1.10 ============ */
+var s10adj=[["antiquus","a um","oud"],["malus","a um","slecht"],["totus","a um","geheel"]];
+renderVocab(document.getElementById("s10"), "s10", s10adj);
+var s10conj=[["nam",null,"want"],["quod",null,"omdat"]];
+renderVocab(document.getElementById("s10"), "s10b", s10conj);
+setMax("s10","s10");
+
+/* ============ 1.11 ============ */
+var s11adj=[["bonus","a um","goed"],["iratus","a um","woedend"],["stultus","a um","dwaas"]];
+renderVocab(document.getElementById("s11"), "s11", s11adj);
+renderVocab(document.getElementById("s11"), "s11b", [["bene",null,"goed"]]);
+setMax("s11","s11");
+
+/* ============ 1.12 ============ */
+var s12rows=[
+  ["unus","I","een, enig"],
+  ["duo","II","twee"],
+  ["tres","III","drie"],
+  ["quattuor","IV","vier"],
+  ["quinque","V","vijf"],
+  ["sex","VI","zes"],
+  ["septem","VII","zeven"],
+  ["octo","VIII","acht"],
+  ["novem","IX","negen"],
+  ["decem","X","tien"],
+  ["centum","C","honderd"],
+  ["mille","M","duizend"],
+  ["milia",null,"...duizend"]
+];
+s12rows.forEach(function(row,i){
+  var fields = row[1] ? [{accept:row[1], width:"narrow"},{accept:row[2], width:""}] : [{accept:row[2], width:""}];
+  makeFillItem(document.getElementById("s12"), "s12_"+i, "<span class='lat'>"+row[0]+"</span> <span style='color:var(--ink-soft);font-size:.8em'>(Romeins cijfer?)</span>", fields);
+});
+setMax("s12","s12");
+
+/* ============ kader: quoque & enim ============ */
+var sk4 = document.getElementById("sk4");
+makeOpenItem(sk4, "sk4_0",
+  "Vertaal: <span class='lat'>Albius senātor quoque est.</span> — waar staat <span class='lat'>quoque</span> en waarom?",
+  "<b>Vertaling:</b> \"Albius is ook een senator.\"<br><span class='lat'>Quoque</span> staat <b>achter</b> het woord waar het bij hoort (hier: senātor).",
+  2);
+makeOpenItem(sk4, "sk4_1",
+  "Vertaal: <span class='lat'>Servae enim saepe in culīnā labōrant.</span> — waarom staat <span class='lat'>enim</span> niet op de eerste plaats?",
+  "<b>Vertaling:</b> \"Want de slavinnen werken dikwijls in de keuken.\"<br><span class='lat'>Enim</span> (\"want\") staat in het Latijn <b>nooit</b> als eerste woord van de zin.",
+  2);
+setMax("sk4","sk4");
+
+/* ---------- reset ---------- */
+document.getElementById("resetBtn").addEventListener("click", function(){
+  try{ localStorage.removeItem(LS_KEY); }catch(e){}
+  location.reload();
+});
+
+/* theme toggle */
+var themeBtn = document.getElementById("themeToggle");
+var savedTheme = null;
+try{ savedTheme = localStorage.getItem(LS_KEY+"-theme"); }catch(e){}
+if(savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+themeBtn.addEventListener("click", function(){
+  var cur = document.documentElement.getAttribute("data-theme");
+  var next = cur==="dark" ? "light" : (cur==="light" ? null : "dark");
+  if(next) document.documentElement.setAttribute("data-theme", next);
+  else document.documentElement.removeAttribute("data-theme");
+  try{ if(next) localStorage.setItem(LS_KEY+"-theme", next); else localStorage.removeItem(LS_KEY+"-theme"); }catch(e){}
+});
+
+updateScoreboard();
+})();
+</script>
 </body>
 </html>
