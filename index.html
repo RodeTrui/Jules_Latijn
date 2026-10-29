@@ -2,482 +2,252 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caput 1 — Volledige Woordenschat</title>
-<meta name="description" content="Oefentoets: volledige woordenlijst Caput 1 Theatrum (1–131) + groene kaders">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grieks: oefentoets woorden 105–125</title>
 <style>
-:root{
-  --bg:#eceef0; --surface:#ffffff; --surface-2:#f4f1e6; --ink:#1f2a24; --ink-soft:#4a564d;
-  --line:#d7d4c4; --accent:#a8721f; --accent-ink:#5c3f10; --accent-soft:#f1e2c4;
-  --wrong:#b3432f; --wrong-soft:#f6ddd6; --partial:#a8721f; --partial-soft:#f1e2c4;
-  --right:#3f6357; --right-soft:#dfe9e2; color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#161c19; --surface:#1f2622; --surface-2:#242c26; --ink:#e9e7da; --ink-soft:#b6bab0;
-    --line:#3a4239; --accent:#d9a44a; --accent-ink:#2b1d09; --accent-soft:#3a2f18;
-    --wrong:#e29383; --wrong-soft:#3d241e; --partial:#d9a44a; --partial-soft:#3a2f18;
-    --right:#8caf9c; --right-soft:#233a30; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#161c19; --surface:#1f2622; --surface-2:#242c26; --ink:#e9e7da; --ink-soft:#b6bab0;
-  --line:#3a4239; --accent:#d9a44a; --accent-ink:#2b1d09; --accent-soft:#3a2f18;
-  --wrong:#e29383; --wrong-soft:#3d241e; --partial:#d9a44a; --partial-soft:#3a2f18;
-  --right:#8caf9c; --right-soft:#233a30; color-scheme:dark;
-}
-*{box-sizing:border-box;}
-body{background:var(--bg); color:var(--ink); font-family:'Work Sans','Segoe UI',sans-serif; padding-inline:16px; padding-block:28px 110px; max-width:760px; margin:0 auto;}
-h1,h2{font-family:'Spectral',Georgia,serif; text-wrap:balance; margin:0;}
-.lat{font-family:'IBM Plex Mono','Courier New',monospace;}
-header.page{margin-bottom:24px; position:relative;}
-.eyebrow{font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft); display:inline-block; padding:.25em .6em; border-radius:3px; margin-bottom:.9em;}
-h1{font-size:clamp(1.5rem,5vw,2rem); font-weight:600;}
-.subtitle{color:var(--ink-soft); font-size:.95rem; margin-top:.5em; max-width:62ch;}
-.themebtn{position:absolute; top:0; right:0; background:var(--surface); border:1px solid var(--line); color:var(--ink); border-radius:20px; padding:6px 12px; font-size:.78rem; cursor:pointer; font-family:inherit;}
-section.block{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px 20px 22px; margin-bottom:18px;}
-.block-head{display:flex; align-items:baseline; gap:.6em; margin-bottom:.3em;}
-.block-num{font-family:'Spectral',serif; font-weight:600; font-size:.95rem; color:var(--accent-ink); background:var(--accent-soft); padding:.15em .6em; border-radius:12px; flex-shrink:0;}
-.block-title{font-family:'Spectral',serif; font-size:1.08rem; font-weight:600;}
-.block-sub{color:var(--ink-soft); font-size:.83rem; margin:.2em 0 1em 0;}
-.block-max{margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:.76rem; color:var(--ink-soft); white-space:nowrap;}
-.item{display:flex; flex-wrap:wrap; align-items:center; gap:.5em; padding:.5em 0; border-top:1px dashed var(--line); font-size:.95rem;}
-.item:first-of-type{border-top:none;}
-.item .word{font-family:'Work Sans',sans-serif; min-width:0; flex:1 1 auto;}
-.item input[type=text]{font-family:'IBM Plex Mono',monospace; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); border-radius:5px; padding:.32em .5em; font-size:.88rem; width:9.5em;}
-.item input[type=text].narrow{width:3.6em;}
-.item input.correct{border-color:var(--right); background:var(--right-soft);}
-.item input.wrong{border-color:var(--wrong); background:var(--wrong-soft);}
-.item .fb{font-size:.85rem; font-family:'IBM Plex Mono',monospace; width:1.2em;}
-.item .fb.ok{color:var(--right);} .item .fb.no{color:var(--wrong);}
-.open-item{padding:.8em 0; border-top:1px dashed var(--line);}
-.open-item:first-of-type{border-top:none;}
-.open-q{font-family:'IBM Plex Mono',monospace; font-weight:600; margin-bottom:.5em;}
-.reveal-btn{background:var(--accent-soft); color:var(--accent-ink); border:none; border-radius:5px; padding:.4em .8em; font-size:.8rem; cursor:pointer; font-family:inherit;}
-.answer{margin-top:.6em; padding:.7em .8em; background:var(--surface-2); border-left:3px solid var(--accent); border-radius:0 6px 6px 0; font-size:.88rem; display:none;}
-.answer.shown{display:block;}
-.grade-row{margin-top:.6em; display:none; gap:.5em;}
-.grade-row.shown{display:flex;}
-.grade-btn{border:1px solid var(--line); background:var(--surface); border-radius:5px; padding:.3em .65em; font-size:.78rem; cursor:pointer; font-family:'IBM Plex Mono',monospace; color:var(--ink);}
-.grade-btn.active-fout{background:var(--wrong-soft); border-color:var(--wrong); color:var(--wrong);}
-.grade-btn.active-deels{background:var(--partial-soft); border-color:var(--partial); color:var(--partial);}
-.grade-btn.active-juist{background:var(--right-soft); border-color:var(--right); color:var(--right);}
-.scoreboard{position:fixed; left:0; right:0; bottom:0; background:var(--surface); border-top:1px solid var(--line); padding:.65em 16px calc(.65em + env(safe-area-inset-bottom,0px)); display:flex; flex-direction:column; gap:.3em; box-shadow:0 -4px 18px rgba(0,0,0,.08);}
-.score-top{display:flex; justify-content:space-between; align-items:baseline; font-family:'IBM Plex Mono',monospace;}
-.score-total{font-weight:700; font-size:1rem;}
-.score-pct{color:var(--ink-soft); font-size:.82rem;}
-.score-bar{height:7px; background:var(--surface-2); border-radius:4px; overflow:hidden;}
-.score-fill{height:100%; background:var(--accent); width:0%; transition:width .3s;}
-.reset-link{position:absolute; top:.55em; right:16px; font-size:.7rem; color:var(--ink-soft); background:none; border:none; text-decoration:underline; cursor:pointer; font-family:inherit;}
-.subhead{font-family:'Spectral',serif; font-weight:600; font-size:.95rem; color:var(--accent-ink); margin:1.1em 0 .3em;}
-.subhead:first-child{margin-top:0;}
+  :root{ --clay:#b5502e; --clay-dark:#8a3c22; --olive:#6b6f3a; --cream:#f2e9d8; --paper:#ece0c6;
+    --ink:#2c2418; --ink-soft:#5a4f3d; --line:#cbb98f; --good:#4d6b3a; --bad:#a8402e; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; background:var(--cream);
+    background-image: radial-gradient(circle at 20% 15%, rgba(181,80,46,0.06), transparent 40%),
+                      radial-gradient(circle at 85% 80%, rgba(107,111,58,0.08), transparent 45%);
+    font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif; color:var(--ink);
+    display:flex; justify-content:center; padding:36px 16px 80px; }
+  .wrap{ width:100%; max-width:620px; }
+  header{ border-bottom:2px solid var(--clay); padding-bottom:14px; margin-bottom:18px; }
+  .kicker{ font-size:13px; color:var(--olive); font-style:italic; margin:0 0 4px; }
+  h1{ font-size:25px; margin:0; font-weight:600; }
+  .setup{ background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:16px 18px; margin-bottom:18px; }
+  .setup .row{ display:flex; flex-wrap:wrap; gap:10px 16px; align-items:flex-end; }
+  .setup label{ font-size:13px; color:var(--ink-soft); display:flex; flex-direction:column; gap:4px; min-width:0; }
+  .setup input[type=number], .setup select{ font-family:inherit; font-size:15px; padding:8px 10px; border-radius:4px;
+    border:1px solid var(--line); background:var(--cream); color:var(--ink); width:100%; }
+  .setup .num{ width:84px; } .setup .grow{ flex:1 1 180px; }
+  .chk{ flex-direction:row !important; align-items:center; gap:8px !important; font-size:14px !important; }
+  .presets{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .chip{ font-family:inherit; font-size:13px; padding:5px 10px; border-radius:14px; border:1px solid var(--line);
+    background:var(--cream); color:var(--ink-soft); cursor:pointer; }
+  .chip:hover{ border-color:var(--clay); color:var(--clay-dark); }
+  button{ font-family:inherit; font-size:15px; padding:11px 22px; border-radius:4px; border:1px solid transparent; cursor:pointer; }
+  .primary{ background:var(--clay); color:var(--cream); } .primary:hover{ background:var(--clay-dark); }
+  .primary[disabled]{ opacity:.5; cursor:default; }
+  .ghost{ background:transparent; color:var(--clay-dark); border-color:var(--clay); }
+  .good{ background:var(--good); color:var(--cream); flex:1; } .bad{ background:var(--bad); color:var(--cream); flex:1; }
+  .msg{ font-size:13px; color:var(--bad); margin:8px 0 0; min-height:1em; }
+  .progress-row{ display:flex; justify-content:space-between; font-size:14px; color:var(--ink-soft); margin-bottom:8px; }
+  .bar{ height:6px; background:var(--paper); border:1px solid var(--line); border-radius:4px; overflow:hidden; margin-bottom:20px; }
+  .bar-fill{ height:100%; background:var(--clay); width:0%; transition:width .3s ease; }
+  .card{ background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:36px 28px; position:relative; text-align:center; }
+  .card::before{ content:""; position:absolute; inset:10px; border:1px solid rgba(181,80,46,0.18); border-radius:3px; pointer-events:none; }
+  .idx{ font-size:13px; color:var(--olive); margin:0 0 8px; }
+  .latin{ font-size:34px; line-height:1.3; color:var(--clay-dark); font-weight:600; margin:2px 0; word-break:break-word; }
+  .forms{ font-size:16px; color:var(--ink-soft); font-style:italic; margin:2px 0 18px; min-height:1.2em; }
+  .input-row{ display:flex; gap:10px; }
+  .input-row input{ flex:1; min-width:0; font-family:inherit; font-size:17px; padding:12px 14px; border-radius:4px;
+    border:1px solid var(--line); background:var(--cream); color:var(--ink); }
+  .input-row input:focus{ outline:none; border-color:var(--clay); }
+  .btn-row{ display:flex; gap:10px; margin-top:14px; justify-content:center; flex-wrap:wrap; }
+  .fb{ margin-top:16px; padding:12px 14px; border-radius:4px; font-size:16px; display:none; text-align:left; }
+  .fb.show{ display:block; }
+  .fb.ok{ background:rgba(77,107,58,0.14); border:1px solid var(--good); color:var(--good); }
+  .fb.no{ background:rgba(168,64,46,0.10); border:1px solid var(--bad); color:var(--bad); }
+  .fb .ans{ display:block; margin-top:4px; color:var(--ink); font-weight:600; }
+  .answer-block{ margin-top:18px; padding-top:16px; border-top:1px dashed var(--line); display:none; }
+  .answer-block.show{ display:block; }
+  .translation{ font-size:24px; color:var(--good); font-weight:600; margin:0; }
+  .summary .score{ font-size:48px; color:var(--clay-dark); font-weight:600; margin:6px 0 4px; }
+  .summary p{ color:var(--ink-soft); margin:4px 0 20px; }
+  .missed{ text-align:left; list-style:none; padding:16px 0 0; margin:0 0 24px; border-top:1px solid var(--line); }
+  .missed li{ display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px dashed var(--line); font-size:15px; }
+  .missed .g{ color:var(--clay-dark); font-weight:600; } .missed .a{ color:var(--ink-soft); text-align:right; }
+  footer{ text-align:center; margin-top:26px; font-size:12px; color:var(--ink-soft); font-style:italic; }
+  .fields{ display:grid; gap:10px; margin-top:6px; text-align:left; }
+  .f{ display:grid; grid-template-columns: 1fr 1.4fr; gap:10px; align-items:center; font-size:14px; color:var(--ink-soft); }
+  .f input{ font-family:inherit; font-size:17px; padding:10px 12px; border-radius:4px; border:1px solid var(--line); background:var(--cream); color:var(--ink); min-width:0; width:100%; }
+  .f input:focus{ outline:none; border-color:var(--clay); }
+  .f.ok input{ border-color:var(--good); background:rgba(77,107,58,0.16); color:var(--good); font-weight:600; }
+  .f.no input{ border-color:var(--bad); background:rgba(168,64,46,0.12); color:var(--bad); }
+  .f .fix{ grid-column:1 / -1; font-size:13px; color:var(--bad); margin-top:-4px; }
+  .hintbox{ display:none; margin-top:12px; padding:10px 14px; border-radius:4px; background:rgba(107,111,58,0.14); border:1px solid var(--olive); color:var(--ink-soft); font-size:15px; font-style:italic; text-align:left; }
+  .hintbox.show{ display:block; }
+  .res{ margin-top:14px; padding:10px 14px; border-radius:4px; font-size:15px; display:none; text-align:left; }
+  .res.show{ display:block; } .res.g{ background:rgba(77,107,58,0.14); border:1px solid var(--good); color:var(--good); } .res.b{ background:rgba(168,64,46,0.10); border:1px solid var(--bad); color:var(--bad); }
+  .inf{ font-size:36px; color:var(--clay-dark); font-weight:600; margin:2px 0 4px; }
+  .note{ font-size:13px; color:var(--ink-soft); font-style:italic; margin:0 0 14px; min-height:1.2em; }
+
+.sent{font-size:19px;line-height:2.1;margin:6px 0 14px;}
+.sent input{width:120px;font:inherit;font-size:17px;padding:2px 8px;border:none;border-bottom:2px solid var(--ink-soft);background:transparent;text-align:center;color:inherit;}
+.sent input.ok{border-bottom-color:#2e7d32;color:#2e7d32;}
+.sent input.no{border-bottom-color:#c62828;color:#c62828;}
+.tag{display:inline-block;font-size:13px;opacity:.75;margin-bottom:4px;}
+label.opt{font-size:14px;display:block;margin:0 0 12px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px;}
+.chips label{border:1px solid var(--ink-soft);border-radius:999px;padding:4px 12px;font-size:14px;cursor:pointer;user-select:none;}
+.chips label.on{background:var(--ink-soft);color:#fff;}
+.chips input{display:none;}
+.sh{font-size:13px;text-transform:uppercase;letter-spacing:.06em;opacity:.7;margin:10px 0 2px;}
+.mini{font-size:13px;margin-left:8px;cursor:pointer;text-decoration:underline;background:none;border:none;color:inherit;padding:0;}
+select#num{font:inherit;padding:4px 8px;}
+textarea.qline-in{min-height:90px;resize:vertical;font-family:inherit}
+select.qline-in{background:transparent;color:inherit}
+.model{border-left:3px solid var(--ink-soft);padding:6px 12px;margin:8px 0;font-size:15px;line-height:1.5;display:none}
+.model.show{display:block}
+.hintline{font-size:14px;opacity:.85;margin:8px 0 2px}
+.detail{display:none;margin-top:12px;font-size:15px;line-height:1.5}.detail.show{display:block}.detail .you{margin-bottom:8px;padding:8px 10px;border-radius:8px;background:rgba(127,127,127,.12)}.detail .pt{margin:6px 0;padding:8px 10px;border-radius:8px;border-left:4px solid}.detail .pt.ok{border-color:#2e9e5b;background:rgba(46,158,91,.1)}.detail .pt.no{border-color:#d64545;background:rgba(214,69,69,.12)}.detail .pt b{font-size:17px}.detail small{display:block;opacity:.7;margin-top:6px}
+.gkb{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}.gkb button{min-width:38px;height:40px;font-size:20px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--paper,#f4f4f4);color:inherit;cursor:pointer;padding:0 8px}.gkb button:active{transform:scale(.95)}.gkb .acc{font-size:18px;background:rgba(127,127,127,.15)}.gkb .wide{min-width:64px}.gkh{font-size:13px;opacity:.7;margin:10px 0 0}
 </style>
+<style>.qline{white-space:pre-line;font-size:19px;line-height:1.6;margin:6px 0 12px;}.qline-in{margin-bottom:8px;width:100%;box-sizing:border-box;font:inherit;font-size:17px;padding:8px 10px;border:2px solid var(--ink-soft);border-radius:8px;background:transparent;color:inherit;}.qline-in.ok{border-color:#2e7d32;color:#2e7d32;}.qline-in.no{border-color:#c62828;color:#c62828;}.hintline{font-size:14px;opacity:.8;min-height:20px;margin:6px 0;}</style>
 </head>
 <body>
-<header class="page">
-  <button class="themebtn" id="themeToggle">🌓 Thema</button>
-  <div class="eyebrow">Caput 1 · Theātrum — woordenlijst 1–131</div>
-  <h1>Volledige Woordenschat</h1>
-  <p class="subtitle">Alle woorden van p. 3 t/m p. 8 (1.2 t/m 1.12) + de groene kaders. Je krijgt telkens het Latijnse grondwoord — typ de middenkolom (genitief + genus bij substantieven, 1ste persoon bij werkwoorden) <i>en</i> de Nederlandse vertaling.</p>
-</header>
-
-<section class="block"><div class="block-head"><div class="block-num">1.2</div><div class="block-title">Substantieven — grondlijst</div><div class="block-max" id="max-s2"></div></div><div id="s2"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Mannelijk → vrouwelijk</div><div class="block-max" id="max-sk1"></div></div><p class="block-sub">Van sommige 1ste-klasse woorden bestaat een aparte vrouwelijke vorm.</p><div id="sk1"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.3</div><div class="block-title">Substantieven, werkwoordvormen, bijwoorden &amp; voegwoorden</div><div class="block-max" id="max-s3"></div></div><div id="s3"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.4</div><div class="block-title">Substantieven &amp; bijwoorden</div><div class="block-max" id="max-s4"></div></div><div id="s4"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.5</div><div class="block-title">Substantieven &amp; overig</div><div class="block-max" id="max-s5"></div></div><div id="s5"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Genus: woorden op -us zijn niet altijd mannelijk</div><div class="block-max" id="max-sk2"></div></div><p class="block-sub">corpus, onus, sīdus, tempus zijn alle vier onzijdig.</p><div id="sk2"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.6</div><div class="block-title">Substantief, werkwoorden &amp; bijwoorden</div><div class="block-max" id="max-s6"></div></div><div id="s6"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.7</div><div class="block-title">Substantieven, werkwoorden &amp; bijwoorden</div><div class="block-max" id="max-s7"></div></div><div id="s7"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Substantieven op -es</div><div class="block-max" id="max-sk3"></div></div><p class="block-sub">Niet alle woorden op -es zijn meervoud!</p><div id="sk3"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.8</div><div class="block-title">Substantieven, bijvoeglijke naamwoorden, werkwoorden &amp; overig</div><div class="block-max" id="max-s8"></div></div><div id="s8"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.9</div><div class="block-title">Werkwoorden, bijvoeglijke naamwoorden &amp; bijwoord</div><div class="block-max" id="max-s9"></div></div><div id="s9"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.10</div><div class="block-title">Bijvoeglijke naamwoorden &amp; voegwoorden</div><div class="block-max" id="max-s10"></div></div><div id="s10"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.11</div><div class="block-title">Bijvoeglijke naamwoorden &amp; bijwoord</div><div class="block-max" id="max-s11"></div></div><div id="s11"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">1.12</div><div class="block-title">Telwoorden 1–10, 100, 1000</div><div class="block-max" id="max-s12"></div></div><div id="s12"></div></section>
-
-<section class="block"><div class="block-head"><div class="block-num">kader</div><div class="block-title">Woordvolgorde: quoque &amp; enim</div><div class="block-max" id="max-sk4"></div></div><p class="block-sub">Vertaal en let op de plaats van quoque/enim.</p><div id="sk4"></div></section>
-
-<p style="text-align:center;"><button class="reset-link" id="resetBtn" type="button" style="position:static;">score resetten</button></p>
-
-<div class="scoreboard">
-  <div class="score-top"><span>Score</span><span class="score-total"><span id="scoreNow">0</span> / <span id="scoreMax">0</span></span><span class="score-pct" id="scorePct">0%</span></div>
-  <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+<div class="wrap">
+  <header><p class="kicker">Grieks · Woordenschat 105–125</p><h1>Oefentoets woorden</h1></header>
+  <div id="intro" class="setup">
+    <p style="margin:0 0 10px;font-size:15px;line-height:1.55;color:var(--ink-soft);">Oefentoets over woord 105 t.e.m. 125 (ὑπό … ἡμέρα): Grieks ↔ Nederlands, meerkeuze, vormen, voorzetsels en korte zinnen. Typ Grieks met je Griekse toetsenbord; accenten en spiritus mag je weglaten. Bij open vragen vergelijk je met het modelantwoord en geef je jezelf Goed of Fout; de uitleg per woord toont wat je mist.</p>
+    <p class="sh">Onderdelen <button type="button" class="mini" id="all-v">alles</button><button type="button" class="mini" id="none-v">niets</button></p>
+    <div class="chips" id="cats"></div>
+    <p class="sh">Aantal vragen <select id="num"><option value="10">10</option><option value="20">20</option><option value="30" selected>30</option><option value="50">50</option><option value="0">alle gekozen</option></select></p>
+    <div class="btn-row" style="justify-content:flex-start;"><button type="button" class="primary" id="start-btn">Start</button><button type="button" class="ghost" id="redo-saved" style="display:none;"></button></div>
+  </div>
+  <div id="play" style="display:none;">
+    <div class="progress-row"><span id="ptext"></span><span id="stext"></span></div>
+    <div class="bar"><div class="bar-fill" id="bar"></div></div>
+    <div class="card">
+      <p class="idx" id="tag"></p>
+      <p class="qline" id="q"></p>
+      <div id="fields"></div>
+      <p class="gkh">Grieks toetsenbord (accenten zijn optioneel: tik eerst de klinker, dan het accent)</p>
+      <div class="gkb" id="gkb"></div>
+      <div class="model" id="model"></div>
+      <div id="detail" class="detail"></div>
+      <div class="hintline" id="hint"></div>
+      <div class="res" id="res"></div>
+      <div class="btn-row" id="row1"><button type="button" class="ghost" id="hint-btn">Hint</button><button type="button" class="primary" id="check-btn">Controleer</button></div>
+      <div class="btn-row" id="row3" style="display:none;"><button type="button" class="ghost" id="bad-btn">Fout</button><button type="button" class="primary" id="good-btn">Goed</button></div>
+      <div class="btn-row" id="row2" style="display:none;"><button type="button" class="primary" id="next-btn">Volgende</button></div>
+    </div>
+  </div>
+  <div class="card summary" id="sum" style="display:none;">
+    <p class="idx">Klaar!</p><p class="score" id="final"></p><p id="final-text"></p>
+    <ul class="missed" id="missed"></ul>
+    <div class="btn-row"><button type="button" class="primary" id="redo-missed">Fouten opnieuw</button><button type="button" class="ghost" id="again">Nieuwe oefening kiezen</button></div>
+  </div>
+  <footer>Woordenlijst Mythos 2.3 – 3.2 (woorden 105–125)</footer>
 </div>
-
 <script>
+const SECS=[["gn", "Grieks → Nederlands"], ["ng", "Nederlands → Grieks"], ["mc", "Meerkeuze"], ["vorm", "Vormen: genitief, stam, vrouwelijk en onzijdig"], ["vz", "Voorzetsels en naamvallen"], ["zin", "Zinnen vertalen"]];
+const Q=[{"s": "gn", "q": "Vertaal naar het Nederlands: ὑπό (+ gen.)", "f": [{"l": "Nederlands", "t": "text", "a": ["door", "onder"]}], "h": "Woord 105.", "e": "ὑπό (+ gen.) = 1. door (iemand); 2. onder (iets)"}, {"s": "ng", "q": "Vertaal naar het Grieks: 1. door (iemand); 2. onder (iets)", "f": [{"l": "Grieks", "t": "text", "a": ["ὑπό"]}], "h": "Woord 105. Gebruik het Griekse toetsenbord.", "e": "1. door (iemand); 2. onder (iets) = ὑπό (+ gen.)"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ὁ ἑταῖρος", "f": [{"l": "Nederlands", "t": "text", "a": ["kameraad", "dekameraad"]}], "h": "Woord 106.", "e": "ὁ ἑταῖρος = de kameraad"}, {"s": "ng", "q": "Vertaal naar het Grieks: de kameraad", "f": [{"l": "Grieks", "t": "text", "a": ["ὁ ἑταῖρος", "ἑταῖρος"]}], "h": "Woord 106. Gebruik het Griekse toetsenbord.", "e": "de kameraad = ὁ ἑταῖρος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: σῴζειν", "f": [{"l": "Nederlands", "t": "text", "a": ["redden"]}], "h": "Woord 107.", "e": "σῴζειν = redden"}, {"s": "ng", "q": "Vertaal naar het Grieks: redden", "f": [{"l": "Grieks", "t": "text", "a": ["σῴζειν", "σῴζω"]}], "h": "Woord 107. Gebruik het Griekse toetsenbord.", "e": "redden = σῴζειν"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἕκαστος", "f": [{"l": "Nederlands", "t": "text", "a": ["elk", "ieder", "elkieder"]}], "h": "Woord 108.", "e": "ἕκαστος = elk, ieder"}, {"s": "ng", "q": "Vertaal naar het Grieks: elk, ieder", "f": [{"l": "Grieks", "t": "text", "a": ["ἕκαστος"]}], "h": "Woord 108. Gebruik het Griekse toetsenbord.", "e": "elk, ieder = ἕκαστος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: παρέχειν", "f": [{"l": "Nederlands", "t": "text", "a": ["geven", "bezorgen"]}], "h": "Woord 109.", "e": "παρέχειν = geven, bezorgen"}, {"s": "ng", "q": "Vertaal naar het Grieks: geven, bezorgen", "f": [{"l": "Grieks", "t": "text", "a": ["παρέχειν", "παρέχω"]}], "h": "Woord 109. Gebruik het Griekse toetsenbord.", "e": "geven, bezorgen = παρέχειν"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἔξεστι(ν)", "f": [{"l": "Nederlands", "t": "text", "a": ["hetistoegestaan", "hetismogelijk", "toegestaan", "mogelijk"]}], "h": "Woord 110.", "e": "ἔξεστι(ν) = 1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)"}, {"s": "ng", "q": "Vertaal naar het Grieks: 1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)", "f": [{"l": "Grieks", "t": "text", "a": ["ἔξεστιν", "ἔξεστι"]}], "h": "Woord 110. Gebruik het Griekse toetsenbord.", "e": "1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand) = ἔξεστι(ν)"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἡ νίκη", "f": [{"l": "Nederlands", "t": "text", "a": ["overwinning", "deoverwinning"]}], "h": "Woord 111.", "e": "ἡ νίκη = de overwinning"}, {"s": "ng", "q": "Vertaal naar het Grieks: de overwinning", "f": [{"l": "Grieks", "t": "text", "a": ["ἡ νίκη", "νίκη"]}], "h": "Woord 111. Gebruik het Griekse toetsenbord.", "e": "de overwinning = ἡ νίκη"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ὁ βίος", "f": [{"l": "Nederlands", "t": "text", "a": ["leven", "hetleven"]}], "h": "Woord 112.", "e": "ὁ βίος = het leven"}, {"s": "ng", "q": "Vertaal naar het Grieks: het leven", "f": [{"l": "Grieks", "t": "text", "a": ["ὁ βίος", "βίος"]}], "h": "Woord 112. Gebruik het Griekse toetsenbord.", "e": "het leven = ὁ βίος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: δῆλος", "f": [{"l": "Nederlands", "t": "text", "a": ["duidelijk"]}], "h": "Woord 113.", "e": "δῆλος = duidelijk"}, {"s": "ng", "q": "Vertaal naar het Grieks: duidelijk", "f": [{"l": "Grieks", "t": "text", "a": ["δῆλος"]}], "h": "Woord 113. Gebruik het Griekse toetsenbord.", "e": "duidelijk = δῆλος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἐν (+ dat.)", "f": [{"l": "Nederlands", "t": "text", "a": ["in"]}], "h": "Woord 114.", "e": "ἐν (+ dat.) = in"}, {"s": "ng", "q": "Vertaal naar het Grieks: in", "f": [{"l": "Grieks", "t": "text", "a": ["ἐν", "ἐν"]}], "h": "Woord 114. Gebruik het Griekse toetsenbord.", "e": "in = ἐν (+ dat.)"}, {"s": "gn", "q": "Vertaal naar het Nederlands: σύν (+ dat.)", "f": [{"l": "Nederlands", "t": "text", "a": ["samenmet", "met"]}], "h": "Woord 115.", "e": "σύν (+ dat.) = samen met"}, {"s": "ng", "q": "Vertaal naar het Grieks: samen met", "f": [{"l": "Grieks", "t": "text", "a": ["σύν"]}], "h": "Woord 115. Gebruik het Griekse toetsenbord.", "e": "samen met = σύν (+ dat.)"}, {"s": "gn", "q": "Vertaal naar het Nederlands: χαλεπός", "f": [{"l": "Nederlands", "t": "text", "a": ["lastig", "moeilijk"]}], "h": "Woord 116.", "e": "χαλεπός = lastig, moeilijk"}, {"s": "ng", "q": "Vertaal naar het Grieks: lastig, moeilijk", "f": [{"l": "Grieks", "t": "text", "a": ["χαλεπός"]}], "h": "Woord 116. Gebruik het Griekse toetsenbord.", "e": "lastig, moeilijk = χαλεπός"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ὁ φόβος", "f": [{"l": "Nederlands", "t": "text", "a": ["vrees", "devrees", "angst"]}], "h": "Woord 117.", "e": "ὁ φόβος = de vrees"}, {"s": "ng", "q": "Vertaal naar het Grieks: de vrees", "f": [{"l": "Grieks", "t": "text", "a": ["ὁ φόβος", "φόβος"]}], "h": "Woord 117. Gebruik het Griekse toetsenbord.", "e": "de vrees = ὁ φόβος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: φεύγειν", "f": [{"l": "Nederlands", "t": "text", "a": ["vluchten"]}], "h": "Woord 118.", "e": "φεύγειν = vluchten"}, {"s": "ng", "q": "Vertaal naar het Grieks: vluchten", "f": [{"l": "Grieks", "t": "text", "a": ["φεύγειν", "φεύγω"]}], "h": "Woord 118. Gebruik het Griekse toetsenbord.", "e": "vluchten = φεύγειν"}, {"s": "gn", "q": "Vertaal naar het Nederlands: κατέχειν", "f": [{"l": "Nederlands", "t": "text", "a": ["tegenhouden"]}], "h": "Woord 119.", "e": "κατέχειν = tegenhouden"}, {"s": "ng", "q": "Vertaal naar het Grieks: tegenhouden", "f": [{"l": "Grieks", "t": "text", "a": ["κατέχειν", "κατέχω"]}], "h": "Woord 119. Gebruik het Griekse toetsenbord.", "e": "tegenhouden = κατέχειν"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἡ θύρα", "f": [{"l": "Nederlands", "t": "text", "a": ["deur", "dedeur"]}], "h": "Woord 120.", "e": "ἡ θύρα = de deur"}, {"s": "ng", "q": "Vertaal naar het Grieks: de deur", "f": [{"l": "Grieks", "t": "text", "a": ["ἡ θύρα", "θύρα"]}], "h": "Woord 120. Gebruik het Griekse toetsenbord.", "e": "de deur = ἡ θύρα"}, {"s": "gn", "q": "Vertaal naar het Nederlands: νέος", "f": [{"l": "Nederlands", "t": "text", "a": ["nieuw", "jong"]}], "h": "Woord 121.", "e": "νέος = 1. nieuw; 2. jong"}, {"s": "ng", "q": "Vertaal naar het Grieks: 1. nieuw; 2. jong", "f": [{"l": "Grieks", "t": "text", "a": ["νέος"]}], "h": "Woord 121. Gebruik het Griekse toetsenbord.", "e": "1. nieuw; 2. jong = νέος"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἡ χώρα", "f": [{"l": "Nederlands", "t": "text", "a": ["streek", "destreek", "land", "hetland", "gebied"]}], "h": "Woord 122.", "e": "ἡ χώρα = de streek"}, {"s": "ng", "q": "Vertaal naar het Grieks: de streek", "f": [{"l": "Grieks", "t": "text", "a": ["ἡ χώρα", "χώρα"]}], "h": "Woord 122. Gebruik het Griekse toetsenbord.", "e": "de streek = ἡ χώρα"}, {"s": "gn", "q": "Vertaal naar het Nederlands: μικρός", "f": [{"l": "Nederlands", "t": "text", "a": ["klein"]}], "h": "Woord 123.", "e": "μικρός = klein"}, {"s": "ng", "q": "Vertaal naar het Grieks: klein", "f": [{"l": "Grieks", "t": "text", "a": ["μικρός"]}], "h": "Woord 123. Gebruik het Griekse toetsenbord.", "e": "klein = μικρός"}, {"s": "gn", "q": "Vertaal naar het Nederlands: μακρός", "f": [{"l": "Nederlands", "t": "text", "a": ["lang", "groot", "ver"]}], "h": "Woord 124.", "e": "μακρός = lang"}, {"s": "ng", "q": "Vertaal naar het Grieks: lang", "f": [{"l": "Grieks", "t": "text", "a": ["μακρός"]}], "h": "Woord 124. Gebruik het Griekse toetsenbord.", "e": "lang = μακρός"}, {"s": "gn", "q": "Vertaal naar het Nederlands: ἡ ἡμέρα", "f": [{"l": "Nederlands", "t": "text", "a": ["dag", "dedag"]}], "h": "Woord 125.", "e": "ἡ ἡμέρα = de dag"}, {"s": "ng", "q": "Vertaal naar het Grieks: de dag", "f": [{"l": "Grieks", "t": "text", "a": ["ἡ ἡμέρα", "ἡμέρα"]}], "h": "Woord 125. Gebruik het Griekse toetsenbord.", "e": "de dag = ἡ ἡμέρα"}, {"s": "mc", "q": "Wat betekent ὑπό (+ gen.)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["de vrees", "klein", "1. door (iemand); 2. onder (iets)", "elk, ieder"], "a": "1. door (iemand); 2. onder (iets)"}], "h": "", "e": "ὑπό (+ gen.) = 1. door (iemand); 2. onder (iets)"}, {"s": "mc", "q": "Wat betekent ὁ ἑταῖρος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["tegenhouden", "vluchten", "1. door (iemand); 2. onder (iets)", "de kameraad"], "a": "de kameraad"}], "h": "", "e": "ὁ ἑταῖρος = de kameraad"}, {"s": "mc", "q": "Wat betekent σῴζειν?", "f": [{"l": "Betekenis", "t": "sel", "o": ["redden", "de vrees", "duidelijk", "elk, ieder"], "a": "redden"}], "h": "", "e": "σῴζειν = redden"}, {"s": "mc", "q": "Wat betekent ἕκαστος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["elk, ieder", "de deur", "de overwinning", "het leven"], "a": "elk, ieder"}], "h": "", "e": "ἕκαστος = elk, ieder"}, {"s": "mc", "q": "Wat betekent παρέχειν?", "f": [{"l": "Betekenis", "t": "sel", "o": ["geven, bezorgen", "de streek", "lang", "het leven"], "a": "geven, bezorgen"}], "h": "", "e": "παρέχειν = geven, bezorgen"}, {"s": "mc", "q": "Wat betekent ἔξεστι(ν)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["de streek", "1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)", "duidelijk", "tegenhouden"], "a": "1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)"}], "h": "", "e": "ἔξεστι(ν) = 1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)"}, {"s": "mc", "q": "Wat betekent ἡ νίκη?", "f": [{"l": "Betekenis", "t": "sel", "o": ["samen met", "de overwinning", "de dag", "1. nieuw; 2. jong"], "a": "de overwinning"}], "h": "", "e": "ἡ νίκη = de overwinning"}, {"s": "mc", "q": "Wat betekent ὁ βίος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["het leven", "in", "geven, bezorgen", "de vrees"], "a": "het leven"}], "h": "", "e": "ὁ βίος = het leven"}, {"s": "mc", "q": "Wat betekent δῆλος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["duidelijk", "klein", "vluchten", "redden"], "a": "duidelijk"}], "h": "", "e": "δῆλος = duidelijk"}, {"s": "mc", "q": "Wat betekent ἐν (+ dat.)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["de deur", "in", "geven, bezorgen", "samen met"], "a": "in"}], "h": "", "e": "ἐν (+ dat.) = in"}, {"s": "mc", "q": "Wat betekent σύν (+ dat.)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["1. door (iemand); 2. onder (iets)", "samen met", "duidelijk", "lang"], "a": "samen met"}], "h": "", "e": "σύν (+ dat.) = samen met"}, {"s": "mc", "q": "Wat betekent χαλεπός?", "f": [{"l": "Betekenis", "t": "sel", "o": ["tegenhouden", "geven, bezorgen", "in", "lastig, moeilijk"], "a": "lastig, moeilijk"}], "h": "", "e": "χαλεπός = lastig, moeilijk"}, {"s": "mc", "q": "Wat betekent ὁ φόβος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["in", "elk, ieder", "1. door (iemand); 2. onder (iets)", "de vrees"], "a": "de vrees"}], "h": "", "e": "ὁ φόβος = de vrees"}, {"s": "mc", "q": "Wat betekent φεύγειν?", "f": [{"l": "Betekenis", "t": "sel", "o": ["geven, bezorgen", "de deur", "vluchten", "1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)"], "a": "vluchten"}], "h": "", "e": "φεύγειν = vluchten"}, {"s": "mc", "q": "Wat betekent κατέχειν?", "f": [{"l": "Betekenis", "t": "sel", "o": ["1. door (iemand); 2. onder (iets)", "de overwinning", "tegenhouden", "duidelijk"], "a": "tegenhouden"}], "h": "", "e": "κατέχειν = tegenhouden"}, {"s": "mc", "q": "Wat betekent ἡ θύρα?", "f": [{"l": "Betekenis", "t": "sel", "o": ["1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)", "de overwinning", "elk, ieder", "de deur"], "a": "de deur"}], "h": "", "e": "ἡ θύρα = de deur"}, {"s": "mc", "q": "Wat betekent νέος?", "f": [{"l": "Betekenis", "t": "sel", "o": ["de overwinning", "1. nieuw; 2. jong", "lang", "het leven"], "a": "1. nieuw; 2. jong"}], "h": "", "e": "νέος = 1. nieuw; 2. jong"}, {"s": "mc", "q": "Wat betekent ἡ χώρα?", "f": [{"l": "Betekenis", "t": "sel", "o": ["duidelijk", "1. door (iemand); 2. onder (iets)", "de streek", "elk, ieder"], "a": "de streek"}], "h": "", "e": "ἡ χώρα = de streek"}, {"s": "mc", "q": "Wat betekent μικρός?", "f": [{"l": "Betekenis", "t": "sel", "o": ["de kameraad", "klein", "vluchten", "samen met"], "a": "klein"}], "h": "", "e": "μικρός = klein"}, {"s": "mc", "q": "Wat betekent μακρός?", "f": [{"l": "Betekenis", "t": "sel", "o": ["vluchten", "in", "lang", "elk, ieder"], "a": "lang"}], "h": "", "e": "μακρός = lang"}, {"s": "mc", "q": "Wat betekent ἡ ἡμέρα?", "f": [{"l": "Betekenis", "t": "sel", "o": ["1. door (iemand); 2. onder (iets)", "de dag", "vluchten", "de deur"], "a": "de dag"}], "h": "", "e": "ἡ ἡμέρα = de dag"}, {"s": "mc", "q": "Welk Grieks woord betekent: 1. door (iemand); 2. onder (iets)?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἡ νίκη", "ὑπό (+ gen.)", "ἔξεστι(ν)", "ὁ φόβος"], "a": "ὑπό (+ gen.)"}], "h": "", "e": "1. door (iemand); 2. onder (iets) = ὑπό (+ gen.)"}, {"s": "mc", "q": "Welk Grieks woord betekent: de kameraad?", "f": [{"l": "Grieks", "t": "sel", "o": ["ὁ βίος", "νέος", "χαλεπός", "ὁ ἑταῖρος"], "a": "ὁ ἑταῖρος"}], "h": "", "e": "de kameraad = ὁ ἑταῖρος"}, {"s": "mc", "q": "Welk Grieks woord betekent: redden?", "f": [{"l": "Grieks", "t": "sel", "o": ["σῴζειν", "ἡ θύρα", "δῆλος", "μακρός"], "a": "σῴζειν"}], "h": "", "e": "redden = σῴζειν"}, {"s": "mc", "q": "Welk Grieks woord betekent: elk, ieder?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἡ ἡμέρα", "ἡ νίκη", "ἕκαστος", "ὁ ἑταῖρος"], "a": "ἕκαστος"}], "h": "", "e": "elk, ieder = ἕκαστος"}, {"s": "mc", "q": "Welk Grieks woord betekent: geven, bezorgen?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "σύν (+ dat.)", "παρέχειν", "ὁ ἑταῖρος"], "a": "παρέχειν"}], "h": "", "e": "geven, bezorgen = παρέχειν"}, {"s": "mc", "q": "Welk Grieks woord betekent: 1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand)?", "f": [{"l": "Grieks", "t": "sel", "o": ["ὁ βίος", "ἔξεστι(ν)", "ἕκαστος", "δῆλος"], "a": "ἔξεστι(ν)"}], "h": "", "e": "1. het is toegestaan (aan iemand); 2. het is mogelijk (voor iemand) = ἔξεστι(ν)"}, {"s": "mc", "q": "Welk Grieks woord betekent: de overwinning?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "χαλεπός", "ἡ νίκη", "ἐν (+ dat.)"], "a": "ἡ νίκη"}], "h": "", "e": "de overwinning = ἡ νίκη"}, {"s": "mc", "q": "Welk Grieks woord betekent: het leven?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἡ νίκη", "ὁ φόβος", "ὁ βίος", "δῆλος"], "a": "ὁ βίος"}], "h": "", "e": "het leven = ὁ βίος"}, {"s": "mc", "q": "Welk Grieks woord betekent: duidelijk?", "f": [{"l": "Grieks", "t": "sel", "o": ["δῆλος", "χαλεπός", "ἐν (+ dat.)", "μικρός"], "a": "δῆλος"}], "h": "", "e": "duidelijk = δῆλος"}, {"s": "mc", "q": "Welk Grieks woord betekent: in?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "ἐν (+ dat.)", "ἡ νίκη", "σύν (+ dat.)"], "a": "ἐν (+ dat.)"}], "h": "", "e": "in = ἐν (+ dat.)"}, {"s": "mc", "q": "Welk Grieks woord betekent: samen met?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "σῴζειν", "σύν (+ dat.)", "δῆλος"], "a": "σύν (+ dat.)"}], "h": "", "e": "samen met = σύν (+ dat.)"}, {"s": "mc", "q": "Welk Grieks woord betekent: lastig, moeilijk?", "f": [{"l": "Grieks", "t": "sel", "o": ["ὁ ἑταῖρος", "χαλεπός", "ὁ φόβος", "δῆλος"], "a": "χαλεπός"}], "h": "", "e": "lastig, moeilijk = χαλεπός"}, {"s": "mc", "q": "Welk Grieks woord betekent: de vrees?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "ὁ φόβος", "ἐν (+ dat.)", "σύν (+ dat.)"], "a": "ὁ φόβος"}], "h": "", "e": "de vrees = ὁ φόβος"}, {"s": "mc", "q": "Welk Grieks woord betekent: vluchten?", "f": [{"l": "Grieks", "t": "sel", "o": ["χαλεπός", "ἕκαστος", "φεύγειν", "ἐν (+ dat.)"], "a": "φεύγειν"}], "h": "", "e": "vluchten = φεύγειν"}, {"s": "mc", "q": "Welk Grieks woord betekent: tegenhouden?", "f": [{"l": "Grieks", "t": "sel", "o": ["ὑπό (+ gen.)", "κατέχειν", "ἡ θύρα", "ἡ χώρα"], "a": "κατέχειν"}], "h": "", "e": "tegenhouden = κατέχειν"}, {"s": "mc", "q": "Welk Grieks woord betekent: de deur?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἡ θύρα", "ἡ νίκη", "φεύγειν", "μακρός"], "a": "ἡ θύρα"}], "h": "", "e": "de deur = ἡ θύρα"}, {"s": "mc", "q": "Welk Grieks woord betekent: 1. nieuw; 2. jong?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἡ χώρα", "ὁ ἑταῖρος", "νέος", "μικρός"], "a": "νέος"}], "h": "", "e": "1. nieuw; 2. jong = νέος"}, {"s": "mc", "q": "Welk Grieks woord betekent: de streek?", "f": [{"l": "Grieks", "t": "sel", "o": ["χαλεπός", "ἡ χώρα", "νέος", "σύν (+ dat.)"], "a": "ἡ χώρα"}], "h": "", "e": "de streek = ἡ χώρα"}, {"s": "mc", "q": "Welk Grieks woord betekent: klein?", "f": [{"l": "Grieks", "t": "sel", "o": ["ὁ βίος", "μικρός", "νέος", "δῆλος"], "a": "μικρός"}], "h": "", "e": "klein = μικρός"}, {"s": "mc", "q": "Welk Grieks woord betekent: lang?", "f": [{"l": "Grieks", "t": "sel", "o": ["μακρός", "ὁ βίος", "ἡ ἡμέρα", "ἡ νίκη"], "a": "μακρός"}], "h": "", "e": "lang = μακρός"}, {"s": "mc", "q": "Welk Grieks woord betekent: de dag?", "f": [{"l": "Grieks", "t": "sel", "o": ["ἕκαστος", "φεύγειν", "ἡ ἡμέρα", "ὁ ἑταῖρος"], "a": "ἡ ἡμέρα"}], "h": "", "e": "de dag = ἡ ἡμέρα"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ὁ ἑταῖρος.", "f": [{"l": "Genitief", "t": "text", "a": ["τοῦ ἑταίρου"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ὁ ἑταῖρος → τοῦ ἑταίρου"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ἡ νίκη.", "f": [{"l": "Genitief", "t": "text", "a": ["τῆς νίκης"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ἡ νίκη → τῆς νίκης"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ὁ βίος.", "f": [{"l": "Genitief", "t": "text", "a": ["τοῦ βίου"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ὁ βίος → τοῦ βίου"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ὁ φόβος.", "f": [{"l": "Genitief", "t": "text", "a": ["τοῦ φόβου"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ὁ φόβος → τοῦ φόβου"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ἡ θύρα.", "f": [{"l": "Genitief", "t": "text", "a": ["τῆς θύρας"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ἡ θύρα → τῆς θύρας"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ἡ χώρα.", "f": [{"l": "Genitief", "t": "text", "a": ["τῆς χώρας"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ἡ χώρα → τῆς χώρας"}, {"s": "vorm", "q": "Geef de genitief enkelvoud (met lidwoord) van ἡ ἡμέρα.", "f": [{"l": "Genitief", "t": "text", "a": ["τῆς ἡμέρας"]}], "h": "Genitief: -ου (mannelijk), -ης of -ας (vrouwelijk).", "e": "ἡ ἡμέρα → τῆς ἡμέρας"}, {"s": "vorm", "q": "Geef de 1e persoon enkelvoud (ik) van σῴζειν.", "f": [{"l": "Vorm", "t": "text", "a": ["σῴζω"]}], "h": "Infinitief -ειν → -ω.", "e": "σῴζειν → σῴζω"}, {"s": "vorm", "q": "Geef de infinitief bij σῴζω.", "f": [{"l": "Infinitief", "t": "text", "a": ["σῴζειν"]}], "h": "-ω → -ειν.", "e": "σῴζω → σῴζειν"}, {"s": "vorm", "q": "Geef de 1e persoon enkelvoud (ik) van παρέχειν.", "f": [{"l": "Vorm", "t": "text", "a": ["παρέχω"]}], "h": "Infinitief -ειν → -ω.", "e": "παρέχειν → παρέχω"}, {"s": "vorm", "q": "Geef de infinitief bij παρέχω.", "f": [{"l": "Infinitief", "t": "text", "a": ["παρέχειν"]}], "h": "-ω → -ειν.", "e": "παρέχω → παρέχειν"}, {"s": "vorm", "q": "Geef de 1e persoon enkelvoud (ik) van φεύγειν.", "f": [{"l": "Vorm", "t": "text", "a": ["φεύγω"]}], "h": "Infinitief -ειν → -ω.", "e": "φεύγειν → φεύγω"}, {"s": "vorm", "q": "Geef de infinitief bij φεύγω.", "f": [{"l": "Infinitief", "t": "text", "a": ["φεύγειν"]}], "h": "-ω → -ειν.", "e": "φεύγω → φεύγειν"}, {"s": "vorm", "q": "Geef de 1e persoon enkelvoud (ik) van κατέχειν.", "f": [{"l": "Vorm", "t": "text", "a": ["κατέχω"]}], "h": "Infinitief -ειν → -ω.", "e": "κατέχειν → κατέχω"}, {"s": "vorm", "q": "Geef de infinitief bij κατέχω.", "f": [{"l": "Infinitief", "t": "text", "a": ["κατέχειν"]}], "h": "-ω → -ειν.", "e": "κατέχω → κατέχειν"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van ἕκαστος.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["ἑκάστη"]}, {"l": "Onzijdig", "t": "text", "a": ["ἕκαστον"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "ἕκαστος, ἑκάστη, ἕκαστον"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van δῆλος.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["δήλη"]}, {"l": "Onzijdig", "t": "text", "a": ["δῆλον"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "δῆλος, δήλη, δῆλον"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van χαλεπός.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["χαλεπή"]}, {"l": "Onzijdig", "t": "text", "a": ["χαλεπόν"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "χαλεπός, χαλεπή, χαλεπόν"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van νέος.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["νέα"]}, {"l": "Onzijdig", "t": "text", "a": ["νέον"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "νέος, νέα, νέον"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van μικρός.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["μικρά"]}, {"l": "Onzijdig", "t": "text", "a": ["μικρόν"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "μικρός, μικρά, μικρόν"}, {"s": "vorm", "q": "Geef de vrouwelijke en onzijdige vorm (nominatief enkelvoud) van μακρός.", "f": [{"l": "Vrouwelijk", "t": "text", "a": ["μακρά"]}, {"l": "Onzijdig", "t": "text", "a": ["μακρόν"]}], "h": "Bij νέος is het vrouwelijk νέα (na ε).", "e": "μακρός, μακρά, μακρόν"}, {"s": "vorm", "q": "Wat is de stam van ἑταῖρος?", "f": [{"l": "Stam", "t": "text", "a": ["ἑταῖρ-", "ἑταῖρ"]}], "h": "Haal de uitgang weg.", "e": "stam: ἑταῖρ-"}, {"s": "vorm", "q": "Wat is de stam van νίκη?", "f": [{"l": "Stam", "t": "text", "a": ["νικ-", "νικ"]}], "h": "Haal de uitgang weg.", "e": "stam: νικ-"}, {"s": "vorm", "q": "Wat is de stam van βίος?", "f": [{"l": "Stam", "t": "text", "a": ["βι-", "βι"]}], "h": "Haal de uitgang weg.", "e": "stam: βι-"}, {"s": "vorm", "q": "Wat is de stam van φόβος?", "f": [{"l": "Stam", "t": "text", "a": ["φοβ-", "φοβ"]}], "h": "Haal de uitgang weg.", "e": "stam: φοβ-"}, {"s": "vorm", "q": "Wat is de stam van θύρα?", "f": [{"l": "Stam", "t": "text", "a": ["θυρ-", "θυρ"]}], "h": "Haal de uitgang weg.", "e": "stam: θυρ-"}, {"s": "vorm", "q": "Wat is de stam van χώρα?", "f": [{"l": "Stam", "t": "text", "a": ["χωρ-", "χωρ"]}], "h": "Haal de uitgang weg.", "e": "stam: χωρ-"}, {"s": "vorm", "q": "Wat is de stam van μικρός?", "f": [{"l": "Stam", "t": "text", "a": ["μικρ-", "μικρ"]}], "h": "Haal de uitgang weg.", "e": "stam: μικρ-"}, {"s": "vorm", "q": "Wat is de stam van μακρός?", "f": [{"l": "Stam", "t": "text", "a": ["μακρ-", "μακρ"]}], "h": "Haal de uitgang weg.", "e": "stam: μακρ-"}, {"s": "vorm", "q": "Wat is de stam van ἡμέρα?", "f": [{"l": "Stam", "t": "text", "a": ["ἡμερ-", "ἡμερ"]}], "h": "Haal de uitgang weg.", "e": "stam: ἡμερ-"}, {"s": "vorm", "q": "Wat is de stam van σῴζειν?", "f": [{"l": "Stam", "t": "text", "a": ["σῳζ-", "σῳζ"]}], "h": "Haal de uitgang weg.", "e": "stam: σῳζ-"}, {"s": "vorm", "q": "Wat is de stam van φεύγειν?", "f": [{"l": "Stam", "t": "text", "a": ["φευγ-", "φευγ"]}], "h": "Haal de uitgang weg.", "e": "stam: φευγ-"}, {"s": "vorm", "q": "Wat is de stam van κατέχειν?", "f": [{"l": "Stam", "t": "text", "a": ["κατεχ-", "κατεχ"]}], "h": "Haal de uitgang weg.", "e": "stam: κατεχ-"}, {"s": "vz", "q": "Welke naamval volgt na ὑπό?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "genitief"}], "h": "", "e": "ὑπό + genitief"}, {"s": "vz", "q": "Welke naamval volgt na ἐν?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "datief"}], "h": "", "e": "ἐν + datief"}, {"s": "vz", "q": "Welke naamval volgt na σύν?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "datief"}], "h": "", "e": "σύν + datief"}, {"s": "vz", "q": "Welke naamval volgt na διά (door, doorheen)?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "genitief"}], "h": "", "e": "διά (door, doorheen) + genitief"}, {"s": "vz", "q": "Welke naamval volgt na διά (door, wegens)?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "accusatief"}], "h": "", "e": "διά (door, wegens) + accusatief"}, {"s": "vz", "q": "Welke naamval volgt na ἔξεστι(ν)?", "f": [{"l": "Naamval", "t": "sel", "o": ["nominatief", "genitief", "datief", "accusatief"], "a": "datief"}], "h": "", "e": "ἔξεστι(ν) + datief"}, {"s": "vz", "q": "Vertaal het voorzetsel: ἐν", "f": [{"l": "Nederlands", "t": "text", "a": ["in"]}], "h": "", "e": "ἐν = in"}, {"s": "vz", "q": "Vertaal het voorzetsel: σύν", "f": [{"l": "Nederlands", "t": "text", "a": ["samenmet", "met"]}], "h": "", "e": "σύν = samen met"}, {"s": "vz", "q": "Vertaal het voorzetsel: ὑπό", "f": [{"l": "Nederlands", "t": "text", "a": ["door", "onder"]}], "h": "", "e": "ὑπό = door (iemand) / onder (iets)"}, {"s": "vz", "q": "Wat betekent ὑπό + gen. in «ὑπὸ τοῦ ἑταίρου» (door de kameraad)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["door", "onder", "samen met", "in"], "a": "door"}], "h": "Bij een persoon: door.", "e": "door (iemand)"}, {"s": "vz", "q": "Wat betekent ὑπό + gen. in «ὑπὸ τοῦ δένδρου» (…de boom)?", "f": [{"l": "Betekenis", "t": "sel", "o": ["onder", "door (iemand)", "samen met", "in"], "a": "onder"}], "h": "Bij een zaak/plaats: onder.", "e": "onder (iets)"}, {"s": "zin", "q": "Vertaal: Ὁ ἑταῖρος ὑπὸ τοῦ θεοῦ σῴζεται.", "k": "open", "m": "De kameraad wordt door de god gered.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ ἑταῖρος", "k": ["kameraad"], "m": "de kameraad", "e": "onderwerp"}, {"g": "ὑπὸ τοῦ θεοῦ", "k": ["door", "god"], "m": "door de god", "e": "ὑπό + gen. = door (iemand)"}, {"g": "σῴζεται", "k": ["wordtgered", "gered", "gered"], "m": "wordt gered", "e": "passief: bij σῴζειν (redden)"}]}, {"s": "zin", "q": "Vertaal: Ἡ χώρα μικρά ἐστιν.", "k": "open", "m": "De streek is klein.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἡ χώρα", "k": ["streek", "land"], "m": "de streek", "e": "onderwerp"}, {"g": "μικρά ἐστιν", "k": ["klein", "is"], "m": "is klein", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Ἡ ἡμέρα μακρά ἐστιν.", "k": "open", "m": "De dag is lang.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἡ ἡμέρα", "k": ["dag"], "m": "de dag", "e": "onderwerp"}, {"g": "μακρά ἐστιν", "k": ["lang", "is"], "m": "is lang", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Ἡ ὥρα μικρά ἐστιν, ἡ δὲ ἡμέρα μακρά.", "k": "open", "m": "Het uur is kort/klein, maar de dag is lang.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἡ ὥρα μικρά ἐστιν", "k": ["uur", "klein", "kort"], "m": "het uur is klein", "e": "ὥρα = uur"}, {"g": "ἡ δὲ ἡμέρα μακρά", "k": ["maar", "dag", "lang"], "m": "maar de dag is lang", "e": "δέ = maar"}]}, {"s": "zin", "q": "Vertaal: Ἐν τῇ χώρᾳ ἑκάστη ἡμέρα χαλεπή ἐστιν.", "k": "open", "m": "In de streek is elke dag moeilijk.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἐν τῇ χώρᾳ", "k": ["in", "streek", "land"], "m": "in de streek", "e": "ἐν + dat."}, {"g": "ἑκάστη ἡμέρα", "k": ["elke", "iedere", "dag"], "m": "elke dag", "e": "ἕκαστος, -η, -ον"}, {"g": "χαλεπή ἐστιν", "k": ["moeilijk", "lastig", "is"], "m": "is moeilijk", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Ὁ ἑταῖρος ἐν τῷ οἴκῳ ἐστίν.", "k": "open", "m": "De kameraad is in het huis.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ ἑταῖρος", "k": ["kameraad"], "m": "de kameraad", "e": "onderwerp"}, {"g": "ἐν τῷ οἴκῳ", "k": ["in", "huis"], "m": "in het huis", "e": "ἐν + dat."}, {"g": "ἐστίν", "k": ["is"], "m": "is", "e": ""}]}, {"s": "zin", "q": "Vertaal: Ὁ φόβος χαλεπός ἐστιν.", "k": "open", "m": "De vrees is lastig.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ φόβος", "k": ["vrees", "angst"], "m": "de vrees", "e": "onderwerp"}, {"g": "χαλεπός ἐστιν", "k": ["lastig", "moeilijk", "is"], "m": "is lastig / moeilijk", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Ἡ νίκη δήλη ἐστίν.", "k": "open", "m": "De overwinning is duidelijk.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἡ νίκη", "k": ["overwinning"], "m": "de overwinning", "e": "onderwerp"}, {"g": "δήλη ἐστίν", "k": ["duidelijk", "is"], "m": "is duidelijk", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Οἱ πολέμιοι φεύγουσιν.", "k": "open", "m": "De vijanden vluchten.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Οἱ πολέμιοι", "k": ["vijanden"], "m": "de vijanden", "e": "onderwerp"}, {"g": "φεύγουσιν", "k": ["vluchten"], "m": "vluchten", "e": "3e mv."}]}, {"s": "zin", "q": "Vertaal: Ὁ νεανίσκος τὴν θύραν κατέχει.", "k": "open", "m": "De jongeman houdt de deur tegen.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ νεανίσκος", "k": ["jongeman"], "m": "de jongeman", "e": "onderwerp"}, {"g": "τὴν θύραν", "k": ["deur"], "m": "de deur", "e": "LV"}, {"g": "κατέχει", "k": ["houdttegen", "tegen", "tegenhouden"], "m": "houdt tegen", "e": "3e enk."}]}, {"s": "zin", "q": "Vertaal: Σὺν τῷ ἑταίρῳ βαίνω.", "k": "open", "m": "Ik ga samen met de kameraad.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Σὺν τῷ ἑταίρῳ", "k": ["samenmet", "met", "kameraad"], "m": "samen met de kameraad", "e": "σύν + dat."}, {"g": "βαίνω", "k": ["ga", "loop"], "m": "ik ga", "e": "1e enk."}]}, {"s": "zin", "q": "Vertaal: Ἕκαστος νεανίσκος σὺν τῷ ἑταίρῳ φεύγει.", "k": "open", "m": "Elke jongeman vlucht samen met de kameraad.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἕκαστος νεανίσκος", "k": ["elk", "jongeman", "ieder"], "m": "elke jongeman", "e": "ἕκαστος = elk"}, {"g": "σὺν τῷ ἑταίρῳ", "k": ["samenmet", "met", "kameraad"], "m": "samen met de kameraad", "e": ""}, {"g": "φεύγει", "k": ["vlucht"], "m": "vlucht", "e": "3e enk."}]}, {"s": "zin", "q": "Vertaal: Ὁ θεὸς τῷ ἑταίρῳ νίκην παρέχει.", "k": "open", "m": "De god bezorgt de kameraad de overwinning.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ θεός", "k": ["god"], "m": "de god", "e": "onderwerp"}, {"g": "τῷ ἑταίρῳ", "k": ["kameraad"], "m": "aan de kameraad", "e": "datief = meewerkend voorwerp"}, {"g": "νίκην", "k": ["overwinning"], "m": "de overwinning", "e": "LV"}, {"g": "παρέχει", "k": ["bezorgt", "geeft"], "m": "bezorgt", "e": "3e enk."}]}, {"s": "zin", "q": "Vertaal: Τὸν νέον ἑταῖρον σῴζω.", "k": "open", "m": "Ik red de jonge kameraad.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Τὸν νέον ἑταῖρον", "k": ["jonge", "nieuwe", "kameraad"], "m": "de jonge kameraad", "e": "acc. enk. = LV"}, {"g": "σῴζω", "k": ["red", "redden"], "m": "ik red", "e": "1e enk."}]}, {"s": "zin", "q": "Vertaal: Οὐκ ἔξεστιν ἐν τῷ οἴκῳ φεύγειν.", "k": "open", "m": "Het is niet toegestaan in het huis te vluchten.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Οὐκ ἔξεστιν", "k": ["niet", "toegestaan", "mogelijk"], "m": "het is niet toegestaan", "e": "ἔξεστιν onpersoonlijk"}, {"g": "ἐν τῷ οἴκῳ", "k": ["in", "huis"], "m": "in het huis", "e": ""}, {"g": "φεύγειν", "k": ["vluchten"], "m": "vluchten", "e": "infinitief"}]}, {"s": "zin", "q": "Vertaal: Ὁ βίος τοῦ ἑταίρου δῆλός ἐστιν.", "k": "open", "m": "Het leven van de kameraad is duidelijk.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ὁ βίος", "k": ["leven"], "m": "het leven", "e": "onderwerp"}, {"g": "τοῦ ἑταίρου", "k": ["kameraad", "van"], "m": "van de kameraad", "e": "genitief"}, {"g": "δῆλός ἐστιν", "k": ["duidelijk", "is"], "m": "is duidelijk", "e": "NWDG"}]}, {"s": "zin", "q": "Vertaal: Ἡ θύρα νέα ἐστίν.", "k": "open", "m": "De deur is nieuw.", "h": "Zoek eerst het werkwoord, dan onderwerp en voorwerp.", "p": [{"g": "Ἡ θύρα", "k": ["deur"], "m": "de deur", "e": "onderwerp"}, {"g": "νέα ἐστίν", "k": ["nieuw", "jong", "is"], "m": "is nieuw", "e": "NWDG"}]}];
+const KEY='grieks_woorden_105_125_fout';
+function ld(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return [];}}
+function sv(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
+Q.forEach((q,i)=>{q.id=i;});
+let items=[],cur=0,good=0,missed=[],answered=false,ctrls=[];
+function $(i){return document.getElementById(i);}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ς/g,"σ").replace(/[^\p{L}]/gu,"");}
+function secName(c){for(const x of SECS)if(x[0]===c)return x[1];return c;}
+function chip(box,val,txt){const l=document.createElement('label');const i=document.createElement('input');i.type='checkbox';i.value=val;i.checked=true;l.className='on';l.appendChild(i);l.appendChild(document.createTextNode(txt));i.addEventListener('change',function(){l.className=i.checked?'on':'';});box.appendChild(l);}
+SECS.forEach(c=>chip($('cats'),c[0],c[1]));
+function setAll(on){$('cats').querySelectorAll('input').forEach(i=>{i.checked=on;i.parentNode.className=on?'on':'';});}
+function showSaved(){const n=ld().length;const b=$('redo-saved');b.style.display=n?'inline-block':'none';b.textContent='Herhaal mijn fouten ('+n+')';}
+function begin(l){items=shuffle(l.slice());cur=0;good=0;missed=[];$('intro').style.display='none';$('sum').style.display='none';$('play').style.display='block';load();}
+function record(q,ok){const s=ld().filter(x=>x!==q.id);if(!ok)s.push(q.id);sv(s);if(ok)good++;else missed.push(q);$('stext').textContent=good+" juist";}
+function load(){
+  answered=false;ctrls=[];const q=items[cur];
+  $('ptext').textContent="Vraag "+(cur+1)+" van "+items.length;$('stext').textContent=good+" juist";
+  $('bar').style.width=(cur/items.length*100)+"%";
+  $('tag').textContent=secName(q.s);$('q').textContent=q.q;$('hint').textContent="";$('res').className='res';$('detail').className='detail';$('detail').innerHTML='';
+  const box=$('fields');box.innerHTML="";$('model').className='model';$('model').textContent="";
+  if(q.k==='open'){
+    const t=document.createElement('textarea');t.className='qline-in';t.placeholder='Typ je vertaling …';box.appendChild(t);ctrls.push(t);
+    $('check-btn').textContent='Toon antwoord';$('hint-btn').style.display=q.h?'inline-block':'none';
+  } else {
+    $('check-btn').textContent='Controleer';$('hint-btn').style.display=q.f.some(f=>f.t==='text')?'inline-block':'none';
+    q.f.forEach((f,i)=>{
+      const p=document.createElement('div');p.className='hintline';p.textContent=f.l;box.appendChild(p);
+      let c;
+      if(f.t==='sel'){c=document.createElement('select');c.className='qline-in';const o0=document.createElement('option');o0.value='';o0.textContent='— kies —';c.appendChild(o0);f.o.forEach(x=>{const o=document.createElement('option');o.value=x;o.textContent=x;c.appendChild(o);});}
+      else{c=document.createElement('input');c.type='text';c.className='qline-in';c.autocomplete='off';c.spellcheck=false;c.setAttribute('autocapitalize','off');
+        c.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(answered)next();else if(i<ctrls.length-1)ctrls[i+1].focus();else check();}});}
+      box.appendChild(c);ctrls.push(c);
+    });
+  }
+  $('row1').style.display='flex';$('row2').style.display='none';$('row3').style.display='none';ctrls[0].focus();
+}
+function hint(){const q=items[cur];if(q.k==='open'){$('hint').textContent=q.h||'';return;}const out=[];q.f.forEach(f=>{if(f.t==='text'){const a=f.a[0];out.push(f.l+": begint met «"+a.charAt(0)+"», "+a.replace(/[^\p{L}]/gu,'').length+" letters");}});$('hint').textContent=out.join('  ·  ');}
+function showDetail(q){
+  const d=$('detail');d.innerHTML='';d.className='detail show';
+  const typed=ctrls[0].value.trim(),n=norm(typed);
+  const y=document.createElement('div');y.className='you';y.textContent='Jouw vertaling: '+(typed||'(niets ingevuld)');d.appendChild(y);
+  let wrong=0;
+  (q.p||[]).forEach(function(p){
+    const ok=n&&p.k.some(function(k){return n.indexOf(norm(k))>=0;});
+    if(!ok)wrong++;
+    const e=document.createElement('div');e.className='pt '+(ok?'ok':'no');
+    const b=document.createElement('b');b.textContent=(ok?'✔ ':'✘ ')+p.g+' = '+p.m;e.appendChild(b);
+    const s=document.createElement('div');s.textContent=ok?'Dit deel heb je goed.':(n?'Dit deel zie ik niet (juist) in je vertaling. ':'')+p.e;e.appendChild(s);d.appendChild(e);
+  });
+  if(q.x){const xx=document.createElement('small');xx.textContent=q.x;d.appendChild(xx);}
+  const sm=document.createElement('small');sm.textContent=wrong?'Let op: de controle zoekt sleutelwoorden en kan zich vergissen. Lees ook het modelantwoord en beslis zelf: Goed of Fout.':'Alle sleutelwoorden staan in je antwoord. Controleer nog de woordvolgorde en het modelantwoord.';d.appendChild(sm);
+}
+function check(){
+  if(answered)return;answered=true;const q=items[cur];
+  if(q.k==='open'){const m=$('model');m.textContent="Modelantwoord: "+q.m;m.className='model show';if(q.p||q.x)showDetail(q);$('row1').style.display='none';$('row3').style.display='flex';return;}
+  let all=true;const fixes=[];
+  q.f.forEach((f,i)=>{const c=ctrls[i];let ok;
+    if(f.t==='sel')ok=c.value===f.a;else ok=norm(c.value)!==""&&f.a.some(x=>norm(x)===norm(c.value));
+    c.disabled=true;c.className='qline-in '+(ok?'ok':'no');if(!ok){all=false;fixes.push(f.l+": "+(f.t==='sel'?f.a:f.a[0]));}});
+  record(q,all);
+  const r=$('res');r.className='res show '+(all?'g':'b');r.textContent=all?'Juist!':'Niet juist. Juist: '+fixes.join("  |  ")+(q.e?'\n\nUitleg: '+q.e:'');r.style.whiteSpace='pre-line';
+  $('row1').style.display='none';$('row2').style.display='flex';
+}
+function grade(ok){const q=items[cur];record(q,ok);ctrls[0].disabled=true;$('row3').style.display='none';$('row2').style.display='flex';}
+function next(){cur++;if(cur<items.length)load();else finish();}
+function finish(){
+  $('play').style.display='none';$('sum').style.display='block';
+  $('final').textContent=good+" / "+items.length;const p=good/items.length;
+  $('final-text').textContent=p===1?"Foutloos! Klaar voor de toets.":p>=0.8?"Heel sterk, bekijk de fouten nog even.":p>=0.5?"Goede basis, oefen de fouten nog.":"Blijf oefenen en herlees de leerstof.";
+  const l=$('missed');l.innerHTML="";if(!missed.length){const li=document.createElement('li');li.textContent="Geen enkele vraag fout.";l.appendChild(li);}
+  missed.forEach(m=>{const li=document.createElement('li');const a=document.createElement('span');a.className='g';a.textContent=m.q;const b=document.createElement('span');b.className='a';b.textContent=m.k==='open'?m.m:m.f.map(f=>f.t==='sel'?f.a:f.a[0]).join(" · ");li.appendChild(a);li.appendChild(b);l.appendChild(li);});
+  $('redo-missed').style.display=missed.length?'inline-block':'none';
+}
+$('all-v').addEventListener('click',function(){setAll(true);});
+$('none-v').addEventListener('click',function(){setAll(false);});
+$('start-btn').addEventListener('click',function(){
+  const cs=[].slice.call($('cats').querySelectorAll('input:checked')).map(i=>i.value);
+  let l=Q.filter(q=>cs.indexOf(q.s)>=0);
+  if(!l.length){const b=$('start-btn');b.textContent='Kies minstens één onderdeel';setTimeout(function(){b.textContent='Start';},2000);return;}
+  const n=parseInt($('num').value,10);
+  const g={};shuffle(l).forEach(q=>{(g[q.s]=g[q.s]||[]).push(q);});
+  const keys=Object.keys(g);const out=[];let k=0;
+  while(out.length<l.length){const a=g[keys[k%keys.length]];if(a.length)out.push(a.pop());k++;}
+  begin(n>0?out.slice(0,n):out);});
+$('redo-saved').addEventListener('click',function(){const ids=ld();const l=Q.filter(q=>ids.indexOf(q.id)>=0);if(l.length)begin(l);});
+$('check-btn').addEventListener('click',check);
+$('hint-btn').addEventListener('click',hint);
+$('good-btn').addEventListener('click',function(){grade(true);});
+$('bad-btn').addEventListener('click',function(){grade(false);});
+$('next-btn').addEventListener('click',next);
+$('redo-missed').addEventListener('click',function(){begin(missed.slice());});
+$('again').addEventListener('click',function(){$('sum').style.display='none';$('intro').style.display='block';showSaved();});
+showSaved();
+
 (function(){
-"use strict";
-var LS_KEY = "latijn-georges-woordenschat-131-v1";
-
-function normalize(s){
-  return (s||"").toString().trim().toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g,"")
-    .replace(/[-.,~]/g," ")
-    .replace(/\s+/g," ").trim();
-}
-var scores = {}, maxes = {};
-function loadState(){
-  try{ var raw = localStorage.getItem(LS_KEY); if(raw) return JSON.parse(raw); }catch(e){}
-  return {fills:{}, grades:{}, revealed:{}};
-}
-var state = loadState();
-function saveState(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
-function updateScoreboard(){
-  var total=0,max=0;
-  for(var k in maxes){ if(maxes.hasOwnProperty(k)){ max+=maxes[k]; total+=(scores[k]||0); } }
-  document.getElementById("scoreNow").textContent=(Math.round(total*10)/10).toString();
-  document.getElementById("scoreMax").textContent=max.toString();
-  var pct = max? Math.round((total/max)*100):0;
-  document.getElementById("scorePct").textContent=pct+"%";
-  document.getElementById("scoreFill").style.width=pct+"%";
-}
-
-function makeFillItem(container, id, label, fields){
-  var div=document.createElement("div"); div.className="item";
-  var w=document.createElement("span"); w.className="word"; w.innerHTML=label; div.appendChild(w);
-  var maxPts=fields.length; maxes[id]=maxPts; scores[id]=0;
-  var inputs=[];
-  fields.forEach(function(f,idx){
-    var inp=document.createElement("input"); inp.type="text"; inp.id=id+"_f"+idx;
-    inp.className = f.width==="narrow" ? "narrow" : "";
-    inp.setAttribute("data-accept", f.accept);
-    inp.autocomplete="off"; inp.spellcheck=false;
-    inp.value = state.fills[inp.id]!==undefined ? state.fills[inp.id] : "";
-    div.appendChild(inp); inputs.push(inp);
-  });
-  var fb=document.createElement("span"); fb.className="fb"; fb.id=id+"_fb"; div.appendChild(fb);
-  container.appendChild(div);
-  function checkAll(){
-    var earned=0, allFilled=true;
-    inputs.forEach(function(inp){
-      var accept=inp.getAttribute("data-accept").split("|").map(normalize);
-      var val=normalize(inp.value);
-      if(!val){ allFilled=false; inp.classList.remove("correct","wrong"); return; }
-      if(accept.indexOf(val)!==-1){ inp.classList.add("correct"); inp.classList.remove("wrong"); earned+=1; }
-      else { inp.classList.add("wrong"); inp.classList.remove("correct"); }
-    });
-    scores[id]=earned;
-    if(!allFilled && earned===0){ fb.textContent=""; fb.className="fb"; }
-    else if(earned===maxPts){ fb.textContent="✓"; fb.className="fb ok"; }
-    else { fb.textContent="✗"; fb.className="fb no"; }
-    updateScoreboard(); saveState();
+  var rows=['α β γ δ ε ζ η θ ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ ω'.split(' ')];
+  var acc=[['\u0301','´'],['\u0300','`'],['\u0342','˜'],['\u0313','᾿'],['\u0314','῾'],['\u0345','ͅ'],['\u0308','¨']];
+  var box=document.getElementById('gkb');if(!box)return;
+  var last=null;
+  document.addEventListener('focusin',function(e){var t=e.target;if(t&&(t.tagName==='INPUT'&&t.type==='text'||t.tagName==='TEXTAREA'))last=t;});
+  function ins(s){
+    var t=last;if(!t||t.disabled){t=document.querySelector('#fields input[type=text]:not(:disabled), #fields textarea:not(:disabled)');if(!t)return;last=t;}
+    t.focus();var a=t.selectionStart,b=t.selectionEnd;if(a==null){a=b=t.value.length;}
+    t.value=t.value.slice(0,a)+s+t.value.slice(b);var p=a+s.length;try{t.setSelectionRange(p,p);}catch(e){}
+    t.dispatchEvent(new Event('input',{bubbles:true}));
   }
-  inputs.forEach(function(inp){
-    inp.addEventListener("blur", function(){ state.fills[inp.id]=inp.value; checkAll(); });
-    inp.addEventListener("keydown", function(e){ if(e.key==="Enter"){ inp.blur(); } });
-  });
-  if(inputs.some(function(inp){return inp.value;})) checkAll();
-}
-
-function makeOpenItem(container, id, question, answerHtml, maxPts){
-  maxPts=maxPts||1; maxes[id]=maxPts; scores[id]=state.grades[id]!==undefined?state.grades[id]:0;
-  var div=document.createElement("div"); div.className="open-item";
-  var q=document.createElement("div"); q.className="open-q"; q.innerHTML=question; div.appendChild(q);
-  var btn=document.createElement("button"); btn.className="reveal-btn"; btn.type="button"; btn.textContent="Toon antwoord"; div.appendChild(btn);
-  var ans=document.createElement("div"); ans.className="answer"; ans.innerHTML=answerHtml; div.appendChild(ans);
-  var gradeRow=document.createElement("div"); gradeRow.className="grade-row";
-  var opts=[{key:"fout",label:"Fout",val:0},{key:"deels",label:"Deels",val:maxPts*0.5},{key:"juist",label:"Juist",val:maxPts}];
-  opts.forEach(function(o){
-    var b=document.createElement("button"); b.className="grade-btn"; b.type="button"; b.textContent=o.label;
-    b.addEventListener("click", function(){
-      scores[id]=o.val; state.grades[id]=o.val;
-      Array.prototype.forEach.call(gradeRow.children, function(c){ c.className="grade-btn"; });
-      b.className="grade-btn active-"+o.key;
-      updateScoreboard(); saveState();
-    });
-    gradeRow.appendChild(b);
-  });
-  div.appendChild(gradeRow);
-  function reveal(){ ans.classList.add("shown"); gradeRow.classList.add("shown"); state.revealed[id]=true; saveState(); }
-  btn.addEventListener("click", reveal);
-  if(state.revealed[id]) reveal();
-  if(state.grades[id]!==undefined){
-    var matched=opts.filter(function(o){return o.val===state.grades[id];})[0];
-    if(matched){ Array.prototype.forEach.call(gradeRow.children,function(c){ if(c.textContent===matched.label) c.className="grade-btn active-"+matched.key; }); }
-  }
-  container.appendChild(div);
-}
-
-/* generic vocab renderer — Latijn gegeven, middenkolom + vertaling gevraagd
-   row: [latijn, middenkolomAccept|null, vertalingAccept]
-*/
-function genusAccept(g){ return g==="v" ? "v|vrouwelijk" : g==="m" ? "m|mannelijk" : "o|onzijdig"; }
-function renderVocab(container, prefix, rows){
-  var count = 0;
-  rows.forEach(function(row, i){
-    var lat=row[0], mid=row[1], vert=row[2];
-    var fields=[];
-    if(mid){ fields.push({accept:mid, width:""}); }
-    fields.push({accept:vert, width:""});
-    makeFillItem(container, prefix+"_"+i, "<span class='lat'>"+lat+"</span>", fields);
-    count += fields.length;
-  });
-  return count;
-}
-function setMax(id, container){
-  var m=0; for(var k in maxes){ if(maxes.hasOwnProperty(k) && k.indexOf(id+"_")===0) m+=maxes[k]; }
-  var el=document.getElementById("max-"+id); if(el) el.textContent="/"+m;
-}
-
-/* ============ 1.2 ============ */
-var s2rows = [
-  ["amicus","amici m","de vriend"],
-  ["deus","dei m","de god"],
-  ["dominus","domini m","de meester"],
-  ["equus","equi m","het paard"],
-  ["filius","filii m","de zoon"],
-  ["servus","servi m","de slaaf"],
-  ["aqua","aquae v","het water"],
-  ["familia","familiae v","het gezin, het personeel"],
-  ["via","viae v","de weg"],
-  ["monumentum","monumenti o","het monument, het aandenken"],
-  ["templum","templi o","de tempel"],
-  ["vinum","vini o","de wijn"],
-  ["pater","patris m","de vader"],
-  ["senex","senis m","de oude man"],
-  ["virgo","virginis v","de maagd, het meisje"],
-  ["vox","vocis v","de stem, het woord"],
-  ["flumen","fluminis o","de rivier"],
-  ["sidus","sideris o","de ster, het sterrenbeeld"]
-];
-renderVocab(document.getElementById("s2"), "s2", s2rows);
-setMax("s2", "s2");
-
-/* ============ kader: mannelijk -> vrouwelijk ============ */
-var sk1 = document.getElementById("sk1");
-[["amicus → vrouwelijke vorm?","amica"],["deus → vrouwelijke vorm?","dea"],["dominus → vrouwelijke vorm?","domina"],["filius → vrouwelijke vorm?","filia"],["servus → vrouwelijke vorm?","serva"]].forEach(function(row,i){
-  makeFillItem(sk1, "sk1_"+i, row[0], [{accept:row[1], width:""}]);
-});
-setMax("sk1","sk1");
-
-/* ============ 1.3 ============ */
-var s3rows = [
-  ["femina","feminae v","de vrouw"],
-  ["canis","canis m","de hond"],
-  ["iuvenis","iuvenis m","de jongeman"],
-  ["mercator","mercatoris m","de handelaar"],
-  ["miles","militis m","de soldaat"],
-  ["senator","senatoris m","de senator"],
-  ["nox","noctis v","de nacht"],
-  ["caput","capitis o","het hoofd, het hoofdstuk"]
-];
-renderVocab(document.getElementById("s3"), "s3", s3rows);
-var s3other = [
-  ["est",null,"(hij/zij/het/er) is"],
-  ["sunt",null,"(zij/er) zijn"],
-  ["ibi",null,"daar"],
-  ["saepe",null,"dikwijls"],
-  ["aut",null,"of"],
-  ["et",null,"en, ook"],
-  ["-que",null,"en"],
-  ["sed",null,"maar"]
-];
-renderVocab(document.getElementById("s3"), "s3b", s3other);
-setMax("s3","s3");
-
-/* ============ 1.4 ============ */
-var s4rows = [
-  ["avus","avi m","de grootvader"],
-  ["rosa","rosae v","de roos"],
-  ["donum","doni o","het geschenk"],
-  ["dux","ducis m","de leider"],
-  ["mater","matris v","de moeder"],
-  ["corpus","corporis o","het lichaam"]
-];
-renderVocab(document.getElementById("s4"), "s4", s4rows);
-var s4other=[["iam",null,"al, dadelijk"],["interdum",null,"soms"],["quoque",null,"ook"],["enim",null,"want"]];
-renderVocab(document.getElementById("s4"), "s4b", s4other);
-setMax("s4","s4");
-
-/* ============ 1.5 ============ */
-var s5rows = [
-  ["curia","curiae v","de curia (het Romeinse senaatsgebouw)"],
-  ["fabula","fabulae v","het verhaal, het toneelstuk"],
-  ["luna","lunae v","de maan"],
-  ["forum","fori o","het forum (het Romeinse marktplein)"],
-  ["iudex","iudicis m","de rechter"],
-  ["onus","oneris o","de last"],
-  ["tempus","temporis o","de tijd, het moment"]
-];
-renderVocab(document.getElementById("s5"), "s5", s5rows);
-var s5other=[["non",null,"niet"],["semper",null,"altijd"]];
-renderVocab(document.getElementById("s5"), "s5b", s5other);
-setMax("s5","s5");
-
-/* ============ kader: genus -us ============ */
-var sk2 = document.getElementById("sk2");
-[["corpus","o"],["onus","o"],["sidus","o"],["tempus","o"]].forEach(function(row,i){
-  makeFillItem(sk2, "sk2_"+i, row[0]+" — genus?", [{accept:genusAccept(row[1]), width:"narrow"}]);
-});
-setMax("sk2","sk2");
-
-/* ============ 1.6 ============ */
-var s6rows=[["statua","statuae v","het standbeeld"],["eques","equitis m","de ruiter, de ridder"]];
-renderVocab(document.getElementById("s6"), "s6", s6rows);
-var s6verbs=[
-  ["laborare","laboro","werken, lijden"],
-  ["apparere","appareo","verschijnen, blijken"],
-  ["dormire","dormio","slapen"]
-];
-renderVocab(document.getElementById("s6"), "s6v", s6verbs);
-var s6other=[
-  ["domi",null,"thuis"],
-  ["etiam",null,"ook, zelfs"],
-  ["nondum",null,"nog niet"],
-  ["non iam",null,"niet meer"],
-  ["nunc",null,"nu"]
-];
-renderVocab(document.getElementById("s6"), "s6b", s6other);
-setMax("s6","s6");
-
-/* ============ 1.7 ============ */
-var s7rows=[["theatrum","theatri o","het theater"],["mulier","mulieris v","de vrouw"],["uxor","uxoris v","de echtgenote"]];
-renderVocab(document.getElementById("s7"), "s7", s7rows);
-var s7verbs=[
-  ["cogitare","cogito","(na)denken"],
-  ["dare","do","geven"],
-  ["narrare","narro","vertellen"],
-  ["properare","propero","zich haasten"],
-  ["rogare","rogo","vragen"],
-  ["spectare","specto","(be)kijken, op het oog hebben"],
-  ["stare","sto","staan, blijven staan"],
-  ["gaudere","gaudeo","blij zijn"],
-  ["habere","habeo","hebben, beschouwen als"],
-  ["respondere","respondeo","antwoorden"],
-  ["sedere","sedeo","zitten"],
-  ["videre","video","zien"],
-  ["aperire","aperio","openen, onthullen"],
-  ["venire","venio","komen"],
-  ["esse","sum","zijn, bestaan"]
-];
-renderVocab(document.getElementById("s7"), "s7v", s7verbs);
-var s7other=[
-  ["cur",null,"waarom?"],
-  ["domum",null,"naar huis"],
-  ["ideo",null,"daarom"],
-  ["interea",null,"intussen"]
-];
-renderVocab(document.getElementById("s7"), "s7b", s7other);
-setMax("s7","s7");
-
-/* ============ kader: substantieven op -es ============ */
-var sk3 = document.getElementById("sk3");
-makeOpenItem(sk3, "sk3_0", "Wat is het meervoud van <span class='lat'>eques</span> (de ruiter)?", "<span class='lat'>equitēs</span> (eques zelf is enkelvoud!)", 1);
-makeOpenItem(sk3, "sk3_1", "Wat is het meervoud van <span class='lat'>mīles</span> (de soldaat)?", "<span class='lat'>mīlitēs</span> (mīles zelf is enkelvoud!)", 1);
-setMax("sk3","sk3");
-
-/* ============ 1.8 ============ */
-var s8rows=[["finis","finis m","de grens, het einde, het doel"],["iter","itineris o","de reis, de weg"]];
-renderVocab(document.getElementById("s8"), "s8", s8rows);
-var s8nouns2=[["pecunia","pecuniae v","het geld"],["aedificium","aedificii o","het gebouw"],["spectaculum","spectaculi o","het schouwspel"]];
-renderVocab(document.getElementById("s8"), "s8c", s8nouns2);
-var s8adj=[
-  ["laetus","a um","vrolijk"],
-  ["latus","a um","breed, uitgestrekt"],
-  ["longus","a um","lang"],
-  ["magnus","a um","groot, belangrijk"],
-  ["optimus","a um","beste, zeer goed"],
-  ["timidus","a um","bang"]
-];
-renderVocab(document.getElementById("s8"), "s8b", s8adj);
-var s8verbsother=[["clamare","clamo","roepen"],["invenire","invenio","vinden, ontdekken"]];
-renderVocab(document.getElementById("s8"), "s8d", s8verbsother);
-var s8other=[["tum",null,"op dat moment"],["dum",null,"terwijl"]];
-renderVocab(document.getElementById("s8"), "s8e", s8other);
-setMax("s8","s8");
-
-/* ============ 1.9 ============ */
-var s9verbs=[["amare","amo","beminnen, houden van"],["monere","moneo","waarschuwen"],["audire","audio","horen, luisteren naar"]];
-renderVocab(document.getElementById("s9"), "s9", s9verbs);
-var s9adj=[["altus","a um","hoog, diep"],["magnificus","a um","prachtig"],["multi","ae a","veel"],["novus","a um","nieuw"],["Romanus","a um","Romeins"]];
-renderVocab(document.getElementById("s9"), "s9b", s9adj);
-renderVocab(document.getElementById("s9"), "s9c", [["subito",null,"plotseling"]]);
-setMax("s9","s9");
-
-/* ============ 1.10 ============ */
-var s10adj=[["antiquus","a um","oud"],["malus","a um","slecht"],["totus","a um","geheel"]];
-renderVocab(document.getElementById("s10"), "s10", s10adj);
-var s10conj=[["nam",null,"want"],["quod",null,"omdat"]];
-renderVocab(document.getElementById("s10"), "s10b", s10conj);
-setMax("s10","s10");
-
-/* ============ 1.11 ============ */
-var s11adj=[["bonus","a um","goed"],["iratus","a um","woedend"],["stultus","a um","dwaas"]];
-renderVocab(document.getElementById("s11"), "s11", s11adj);
-renderVocab(document.getElementById("s11"), "s11b", [["bene",null,"goed"]]);
-setMax("s11","s11");
-
-/* ============ 1.12 ============ */
-var s12rows=[
-  ["unus","I","een, enig"],
-  ["duo","II","twee"],
-  ["tres","III","drie"],
-  ["quattuor","IV","vier"],
-  ["quinque","V","vijf"],
-  ["sex","VI","zes"],
-  ["septem","VII","zeven"],
-  ["octo","VIII","acht"],
-  ["novem","IX","negen"],
-  ["decem","X","tien"],
-  ["centum","C","honderd"],
-  ["mille","M","duizend"],
-  ["milia",null,"...duizend"]
-];
-s12rows.forEach(function(row,i){
-  var fields = row[1] ? [{accept:row[1], width:"narrow"},{accept:row[2], width:""}] : [{accept:row[2], width:""}];
-  makeFillItem(document.getElementById("s12"), "s12_"+i, "<span class='lat'>"+row[0]+"</span> <span style='color:var(--ink-soft);font-size:.8em'>(Romeins cijfer?)</span>", fields);
-});
-setMax("s12","s12");
-
-/* ============ kader: quoque & enim ============ */
-var sk4 = document.getElementById("sk4");
-makeOpenItem(sk4, "sk4_0",
-  "Vertaal: <span class='lat'>Albius senātor quoque est.</span> — waar staat <span class='lat'>quoque</span> en waarom?",
-  "<b>Vertaling:</b> \"Albius is ook een senator.\"<br><span class='lat'>Quoque</span> staat <b>achter</b> het woord waar het bij hoort (hier: senātor).",
-  2);
-makeOpenItem(sk4, "sk4_1",
-  "Vertaal: <span class='lat'>Servae enim saepe in culīnā labōrant.</span> — waarom staat <span class='lat'>enim</span> niet op de eerste plaats?",
-  "<b>Vertaling:</b> \"Want de slavinnen werken dikwijls in de keuken.\"<br><span class='lat'>Enim</span> (\"want\") staat in het Latijn <b>nooit</b> als eerste woord van de zin.",
-  2);
-setMax("sk4","sk4");
-
-/* ---------- reset ---------- */
-document.getElementById("resetBtn").addEventListener("click", function(){
-  try{ localStorage.removeItem(LS_KEY); }catch(e){}
-  location.reload();
-});
-
-/* theme toggle */
-var themeBtn = document.getElementById("themeToggle");
-var savedTheme = null;
-try{ savedTheme = localStorage.getItem(LS_KEY+"-theme"); }catch(e){}
-if(savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
-themeBtn.addEventListener("click", function(){
-  var cur = document.documentElement.getAttribute("data-theme");
-  var next = cur==="dark" ? "light" : (cur==="light" ? null : "dark");
-  if(next) document.documentElement.setAttribute("data-theme", next);
-  else document.documentElement.removeAttribute("data-theme");
-  try{ if(next) localStorage.setItem(LS_KEY+"-theme", next); else localStorage.removeItem(LS_KEY+"-theme"); }catch(e){}
-});
-
-updateScoreboard();
+  function mk(label,fn,cls){var b=document.createElement('button');b.type='button';b.textContent=label;if(cls)b.className=cls;
+    b.addEventListener('mousedown',function(e){e.preventDefault();});b.addEventListener('click',fn);box.appendChild(b);}
+  rows[0].forEach(function(c){mk(c,function(){ins(c);});});
+  acc.forEach(function(a){mk(a[1],function(){ins(a[0]);},'acc');});
+  mk('⌫',function(){var t=last;if(!t||t.disabled)return;t.focus();var a=t.selectionStart,b=t.selectionEnd;if(a===b)a=Math.max(0,a-1);t.value=t.value.slice(0,a)+t.value.slice(b);try{t.setSelectionRange(a,a);}catch(e){}},'acc wide');
 })();
 </script>
 </body>
